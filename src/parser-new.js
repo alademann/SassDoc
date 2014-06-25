@@ -1,6 +1,6 @@
 var LINE_BREAK = "\n";
-var SPACE = " ";
-var TAB = " ";
+var SPACE = " "; // @todo should possibly use regex `\s` instead? :@alademann:
+var TAB = " "; // @todo should possibly use regex `\t` instead? :@alademann:
 var LBRACE = "{";
 var RBRACE = "}";
 var LPAREN = "(";
@@ -30,6 +30,12 @@ var parser = {
       'description': false
     }
   },
+
+  //
+  // Is this string intended for taking the parser through its paces?
+  // If so - I'd recommend calling it something like "test"
+  // :@alademann:
+  //
   string: "// Item description\n\
 // spawning on several lines\n\
 // @access private\n\
@@ -65,14 +71,15 @@ var parser = {
       // Moving pointer to next character
       this.next();
 
-      // Trim leading spaces
-      if (character === SPACE || character === TAB) {
+      // Trim leading spaces / tabs
+      if (character.match(/\s|\t/)) {
+        // any reason this is commented out? :@alademann:
         //this.trim();
       }
 
       // If character is a /, consume next /
       else if (character === "/") {
-        this.consume("/");
+        this.consume(character);
       }
 
       // If character is a @, parse token
@@ -96,7 +103,7 @@ var parser = {
    * @return {String} - Current character
    */
   current: function () {
-    return this.string.charAt(this.pointer)
+    return this.string.charAt(this.pointer);
   },
 
   /**
@@ -127,10 +134,10 @@ var parser = {
   },
 
   /**
-   * Consume any leading space
+   * Consume any leading space / tab chars
    */
   trim: function () {
-    while (this.current() === " ") {
+    while (this.current().match(/\s|\t/)) {
       this.next();
     }
   },
@@ -168,6 +175,7 @@ var parser = {
     this.trim();
 
     switch (annotation) {
+      default:
       case "access":
       case "since":
       case "alias":
@@ -235,6 +243,10 @@ var parser = {
    * Capture deprecated flag
    */
   captureDeprecated: function () {
+    // Should this always be a strict boolean
+    // or should the developer be able to use a string
+    // so that they can notate _when_ something was deprecated?
+    // :@alademann:
     this.doc.deprecated = true;
   },
 
@@ -250,18 +262,18 @@ var parser = {
 
     this.trim();
     this.consume('$');
-    name = this.getUntil([SPACE, LINE_BREAK]);
+    name = this.getUntil([SPACE, TAB, LINE_BREAK]);
 
     if (this.current() === LPAREN) {
+      this.consume(this.current());
       this.trim();
-      this.consume(LPAREN);
       defaultValue = this.getUntil(RPAREN);
     }
 
     this.trim();
 
     if (this.current() === "-") {
-      this.consume("-");
+      this.consume(this.current());
     }
 
     this.trim();
@@ -271,8 +283,9 @@ var parser = {
     this.doc.param.push({
       type: type,
       name: name,
-      defaultValue: defaultValue,
-      description: description
+      // should these be empty strings if they are not found? Or simply undefined? :@alademann:
+      defaultValue: defaultValue || '',
+      description: description || ''
     });
   },
 
@@ -293,7 +306,7 @@ var parser = {
    * Capture a link
    */
   captureLink: function () {
-    var url = this.getUntil(SPACE);
+    var url = this.getUntil([SPACE, TAB]);
     var label = this.getUntil(LINE_BREAK);
 
     this.doc.link.push({
