@@ -21,7 +21,7 @@
   {% endif %}
 {% endfor %}
 <div class="highlight">
-  <pre class="item__code"><code class="language-scss">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
+  <pre class="item__code"><code class="language-scss">@{{ item.context.type }} {{ item.context.name }}({{ parameters_string }}) { ... }</code></pre>
 </div>
 
 {% if not item.alias %}
