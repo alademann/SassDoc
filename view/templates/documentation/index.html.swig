@@ -10,7 +10,7 @@
 
   {# No item documented #}
   {% if item_count == 0 %}
-    <section id="sass-api-empty-section" class="wdesk-docs-section wdesk-sassdocs-section">
+    <section id="sass-api-empty-section" class="wdesk-docs-section wdesk-sassdoc-section">
       <div class="page-header">
         <h1 id="sass-api-empty">Seems like nothing has been documented yet!</h1>
       </div>
@@ -27,7 +27,7 @@
 
       {# If there is at least one item to display, go #}
       {% if obj.length > 0 %}
-        <section>
+        <section class="wdesk-docs-section wdesk-sassdoc-section">
           <div class="page-header">
             <h1 id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
           </div>

@@ -86,7 +86,7 @@ a {
 }
 
 
-.wdesk-sassdocs-section > .item__sub-heading {
+.wdesk-sassdoc-section > .item__sub-heading {
   // color: color("green");
   margin-bottom: .5em;
   margin-top: 1em;
@@ -97,7 +97,7 @@ a {
 /**
  * Function name
  */
-.wdesk-sassdocs-section > .item__heading {
+.wdesk-sassdoc-section > .item__heading {
   // color: color("dark-grey");
   font-size: 2.2em;
   margin: 0 0 .5em 0;
@@ -106,7 +106,6 @@ a {
 
   code {
     background-color: transparent;
-    font-size: 100%;
     text-shadow: none;
   }
 }

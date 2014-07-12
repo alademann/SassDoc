@@ -183,17 +183,22 @@
 /**
  * Vendors
  */
-/* http://prismjs.com/download.html?themes=prism&languages=css+scss */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript+scss+bash&plugins=autolinker+wpd+file-highlight+show-language */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
-/* Code blocks */
-/* line 9, ../../scss/vendors/_prism.scss */
+/* line 8, ../../scss/vendors/_prism.scss */
+code[class*="language-"],
 pre[class*="language-"] {
-  font-size: 1em;
-  padding: 1em;
+  color: black;
+  text-shadow: 0 1px white;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -202,88 +207,144 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none; }
 
+/* line 30, ../../scss/vendors/_prism.scss */
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+/* line 36, ../../scss/vendors/_prism.scss */
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+@media print {
+  /* line 43, ../../scss/vendors/_prism.scss */
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none; } }
+/* Code blocks */
+/* line 50, ../../scss/vendors/_prism.scss */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto; }
+
+/* line 56, ../../scss/vendors/_prism.scss */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0; }
+
 /* Inline code */
-/* line 22, ../../scss/vendors/_prism.scss */
+/* line 62, ../../scss/vendors/_prism.scss */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
   border-radius: .3em; }
 
-/* line 27, ../../scss/vendors/_prism.scss */
+/* line 67, ../../scss/vendors/_prism.scss */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
+  color: slategray; }
+
+/* line 74, ../../scss/vendors/_prism.scss */
+.token.punctuation {
   color: #999; }
 
-/* line 34, ../../scss/vendors/_prism.scss */
-.token.punctuation {
-  color: inherit; }
-
-/* line 38, ../../scss/vendors/_prism.scss */
+/* line 78, ../../scss/vendors/_prism.scss */
 .namespace {
   opacity: .7; }
 
-/* line 42, ../../scss/vendors/_prism.scss */
-.token.number {
-  color: #FF6600; }
-
-/* line 46, ../../scss/vendors/_prism.scss */
+/* line 82, ../../scss/vendors/_prism.scss */
 .token.property,
 .token.tag,
-.token.boolean {
-  color: #2f6f9f; }
-
-/* line 52, ../../scss/vendors/_prism.scss */
+.token.boolean,
+.token.number,
 .token.constant,
 .token.symbol {
-  color: #FFCC33; }
+  color: #905; }
 
-/* line 57, ../../scss/vendors/_prism.scss */
+/* line 91, ../../scss/vendors/_prism.scss */
 .token.selector,
-.token.attr-name {
-  color: #00AA88; }
-
-/* line 62, ../../scss/vendors/_prism.scss */
+.token.attr-name,
 .token.string,
-.token.url {
-  color: #CC3300; }
-
-/* line 67, ../../scss/vendors/_prism.scss */
 .token.builtin {
-  color: #336666; }
+  color: #690; }
 
-/* line 71, ../../scss/vendors/_prism.scss */
-.token.operator {
-  color: #555555; }
-
-/* line 75, ../../scss/vendors/_prism.scss */
+/* line 98, ../../scss/vendors/_prism.scss */
+.token.operator,
 .token.entity,
+.token.url,
 .language-css .token.string,
-.style .token.string {
-  color: #999999; }
-
-/* line 81, ../../scss/vendors/_prism.scss */
+.style .token.string,
 .token.variable {
-  color: #006699; }
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5); }
 
-/* line 85, ../../scss/vendors/_prism.scss */
+/* line 108, ../../scss/vendors/_prism.scss */
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #006699; }
+  color: #07a; }
 
-/* line 92, ../../scss/vendors/_prism.scss */
+/* line 114, ../../scss/vendors/_prism.scss */
+.token.function {
+  color: #DD4A68; }
+
+/* line 118, ../../scss/vendors/_prism.scss */
 .token.regex,
 .token.important {
-  color: #33AAAA; }
+  color: #e90; }
 
-/* line 97, ../../scss/vendors/_prism.scss */
+/* line 123, ../../scss/vendors/_prism.scss */
 .token.important {
   font-weight: bold; }
 
-/* line 101, ../../scss/vendors/_prism.scss */
+/* line 127, ../../scss/vendors/_prism.scss */
 .token.entity {
   cursor: help; }
+
+/* line 131, ../../scss/vendors/_prism.scss */
+.token a {
+  color: inherit; }
+
+/* line 134, ../../scss/vendors/_prism.scss */
+code[class*="language-"] a[href],
+pre[class*="language-"] a[href] {
+  cursor: help;
+  text-decoration: none; }
+
+/* line 140, ../../scss/vendors/_prism.scss */
+code[class*="language-"] a[href]:hover,
+pre[class*="language-"] a[href]:hover {
+  cursor: help;
+  text-decoration: underline; }
+
+/* line 145, ../../scss/vendors/_prism.scss */
+pre[class*='language-'] {
+  position: relative; }
+
+/* line 148, ../../scss/vendors/_prism.scss */
+pre[class*='language-'] > code[data-language] {
+  overflow: scroll;
+  max-height: 28em;
+  display: block; }
+
+/* line 153, ../../scss/vendors/_prism.scss */
+pre[class*='language-'] > code[data-language]::before {
+  content: attr(data-language);
+  color: black;
+  background-color: #CFCFCF;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.9em;
+  border-radius: 0 0 0 5px;
+  padding: 0 0.5em;
+  text-shadow: none; }
 
 /**
  * Partials
@@ -359,7 +420,7 @@ a:hover code, a:focus code {
   font-size: .8em; }
 
 /* line 89, ../../scss/partials/_item.scss */
-.wdesk-sassdocs-section > .item__sub-heading {
+.wdesk-sassdoc-section > .item__sub-heading {
   margin-bottom: .5em;
   margin-top: 1em;
   text-transform: uppercase;
@@ -369,53 +430,52 @@ a:hover code, a:focus code {
  * Function name
  */
 /* line 100, ../../scss/partials/_item.scss */
-.wdesk-sassdocs-section > .item__heading {
+.wdesk-sassdoc-section > .item__heading {
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
   position: relative; }
   /* line 107, ../../scss/partials/_item.scss */
-  .wdesk-sassdocs-section > .item__heading code {
+  .wdesk-sassdoc-section > .item__heading code {
     background-color: transparent;
-    font-size: 100%;
     text-shadow: none; }
 
 /**
  * Parameters table
  */
-/* line 117, ../../scss/partials/_item.scss */
+/* line 116, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 122, ../../scss/partials/_item.scss */
+  /* line 121, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
     border-bottom: 2px solid #dddddd;
     border-top: none;
     text-align: left; }
-  /* line 129, ../../scss/partials/_item.scss */
+  /* line 128, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding: .5em;
     vertical-align: top; }
 
 @media (min-width: 601px) {
-  /* line 136, ../../scss/partials/_item.scss */
+  /* line 135, ../../scss/partials/_item.scss */
   tbody > .item__parameter:first-of-type > td {
     border-top: none; }
 
-  /* line 140, ../../scss/partials/_item.scss */
+  /* line 139, ../../scss/partials/_item.scss */
   .item__parameters td,
   .item__parameters th {
     border-top: 1px solid #dddddd; }
-    /* line 144, ../../scss/partials/_item.scss */
+    /* line 143, ../../scss/partials/_item.scss */
     .item__parameters td:first-of-type,
     .item__parameters th:first-of-type {
       padding-left: 0; } }
 /**
  * Scope/access
  */
-/* line 153, ../../scss/partials/_item.scss */
+/* line 152, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -424,12 +484,12 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 162, ../../scss/partials/_item.scss */
+/* line 161, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 168, ../../scss/partials/_item.scss */
+  /* line 167, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }
