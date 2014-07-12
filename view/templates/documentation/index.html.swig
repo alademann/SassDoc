@@ -1,11 +1,19 @@
 {% extends '../layouts/base.html.swig' %}
 
+{# Include sidebar #}
+{% block sidebar %}
+  {% include "../includes/partials/sidebar.html.swig" %}
+{% endblock %}
+
+
 {% block content %}
 
   {# No item documented #}
   {% if item_count == 0 %}
-    <section class="main__section">
-      <h1 class="main__heading">Seems like nothing has been documented yet!</h1>
+    <section id="sass-api-empty-section" class="wdesk-docs-section wdesk-sassdocs-section">
+      <div class="page-header">
+        <h1 id="sass-api-empty">Seems like nothing has been documented yet!</h1>
+      </div>
     </section>
 
   {# Some items documented #}
@@ -19,16 +27,18 @@
 
       {# If there is at least one item to display, go #}
       {% if obj.length > 0 %}
-        <section class="main__section">
-          <h1 class="main__heading" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
+        <section>
+          <div class="page-header">
+            <h1 id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
+          </div>
 
           {# Loop over items in current group #}
           {% for item in obj %}
 
             {# Display item #}
             {% set partial = "../includes/items/" + type + ".html.swig" %}
-            
-            <section class="main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+
+            <section id="{{ item.context.type }}-{{ item.context.name }}-section" class="wdesk-docs-section wdesk-sassdocs-section main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}">
               {% include partial with { item: item, display: display } %}
             </section>
 
@@ -41,9 +51,4 @@
 
   {% endif %}
 
-{% endblock %}
-
-{# Include sidebar #}
-{% block sidebar %}
-  {% include "../includes/partials/sidebar.html.swig" %}
 {% endblock %}

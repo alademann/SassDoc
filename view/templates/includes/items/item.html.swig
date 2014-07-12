@@ -20,12 +20,14 @@
     {% set parameters_string = parameters_string + ', ' + value %}
   {% endif %}
 {% endfor %}
-<pre class="item__code"><code class="language-scss">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
+<div class="highlight">
+  <pre class="item__code"><code class="language-scss">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
+</div>
 
 {% if not item.alias %}
 
   {% include '../annotations/deprecated.html.swig' %}
-  
+
   {% include '../annotations/description.html.swig' %}
 
   {% include '../annotations/parameters.html.swig' %}

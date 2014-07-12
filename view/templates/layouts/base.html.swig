@@ -6,8 +6,8 @@
 {# Count how many items will be displayed #}
 {% set item_count = 0 %}
 
-{# To avoid repeating the same condition over and over again, 
- # do it once and add a `display` key to items 
+{# To avoid repeating the same condition over and over again,
+ # do it once and add a `display` key to items
  #}
 {% for group, object in data %}
   {% for item in object %}
@@ -25,21 +25,24 @@
   {# Include head content #}
   {% include "../includes/partials/head.html.swig" with project_title %}
 </head>
-<body>
+<body class="wdesk-docs-body page-api">
 
   {# Include top navbar #}
+  {% include "../includes/partials/navbar.html.swig" with project_title %}
+
+  {# Include header #}
   {% include "../includes/partials/header.html.swig" with project_title %}
 
   {# Wrapper #}
-  <div class="container">
+  <div class="container wdesk-docs-container sassdoc-container">
 
     {# Sidebar #}
-    <aside class="sidebar" role="nav">
+    <aside class="col-md-3 wdesk-docs-sidebar" role="nav">
       {% block sidebar %}{% endblock %}
     </aside>
 
     {# Main container #}
-    <article class="main" role="main">
+    <article class="col-md-9 wdesk-docs-main wdesk-sassdoc-main" role="main">
       {% block content %}{% endblock %}
     </article>
 

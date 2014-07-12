@@ -1,9 +1,11 @@
-<h2 class="item__heading">
+<h2 id="{{ item.context.type }}-{{ item.context.name }}" class="item__heading">
   {% if item.access[0] != "public" %}
     <span class="item__access">[{{ item.access[0] }}]</span>
   {% endif %}
 
-  <a class="item__name" href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a>
+  <code class="item__name">
+    {% if item.context.type == 'variable' %}${% endif %}{{ item.context.name }}
+  </code>
 
   {% if display.alias and item.aliased.length > 0 %}
     <span class="item__aliased">(aliased as
@@ -18,6 +20,6 @@
   {% endif %}
 
   {% if item.since %}
-    <span class="item__since">Since {{ item.since[0] }}</span>
+    <span class="item__since">Since <code>{{ item.since[0] }}</code></span>
   {% endif %}
 </h2>

@@ -2,9 +2,11 @@
 
 {% include '../annotations/deprecated.html.swig' %}
 
-<pre class="item__code"><code class="language-scss">${{ item.context.name }}: {{ item.context.value | safe }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</code></pre>
+<div class="highlight">
+  <pre class="item__code"><code class="language-scss">${{ item.context.name }}: {{ item.context.value | safe }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</code></pre>
+</div>
 
-{% if not item.alias %}  
+{% if not item.alias %}
 
   {% include '../annotations/description.html.swig' %}
 

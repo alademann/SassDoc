@@ -4,7 +4,7 @@
   <ul class="list-unstyled">
   {% for link in item.link %}
     <li>
-      <a href="{{ link.url }}">
+      <a target="_blank" href="{{ link.url }}">
         {% if link.caption %}
           {{ link.caption }}
         {% else %}
