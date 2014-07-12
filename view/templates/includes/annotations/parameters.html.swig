@@ -1,7 +1,7 @@
 {% if item.parameters.length > 0 %}
   <h3 class="item__sub-heading">Parameters</h3>
 
-  <table class="item__parameters">
+  <table class="table item__parameters">
     <caption class="sr-only">Lists the parameters for the {{ item.name }} {{ item.type }}</caption>
     <thead>
       <tr>
