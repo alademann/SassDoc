@@ -3,14 +3,14 @@
 {% for usedBy in item.usedBy %}
 
   {% if (display.access.indexOf(usedBy.access[0]) != -1) and not (not display.alias and usedBy.alias[0]) %}
-  
+
     {% if not title_displayed %}
       {% set title_displayed = true %}
       <h3 class="item__sub-heading">Used by</h3>
       <ul class="list-unstyled list-annotations">
     {% endif %}
 
-    <li><a href="#{{ usedBy.context.type }}-{{ usedBy.context.name }}"><code>{{ usedBy.context.name }}</code></a></li>
+    <li><a href="#{{ usedBy.context.type }}-{{ usedBy.context.name }}"><code>{% if usedBy.context.type == 'variable' %}${% else %}<i class="text-muted">@{{ usedBy.context.type }}</i> <strong>{% endif %}{{ usedBy.context.name }}{% if usedBy.context.type != 'variable' %}</strong>{% endif %}</code></a></li>
   {% endif %}
 
 {% endfor %}

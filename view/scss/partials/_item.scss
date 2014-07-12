@@ -46,6 +46,19 @@
   }
 }
 
+code .text-muted {
+  color: #bb647a !important;
+}
+
+a {
+  &:hover,
+  &:focus {
+    code {
+      text-decoration: underline;
+    }
+  }
+}
+
 /**
  * Deprecated flag
  */
@@ -73,7 +86,7 @@
 }
 
 
-.item__sub-heading {
+.wdesk-sassdocs-section > .item__sub-heading {
   // color: color("green");
   margin-bottom: .5em;
   margin-top: 1em;
@@ -84,12 +97,18 @@
 /**
  * Function name
  */
-.item__heading {
-  color: color("dark-grey");
+.wdesk-sassdocs-section > .item__heading {
+  // color: color("dark-grey");
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
   position: relative;
+
+  code {
+    background-color: transparent;
+    font-size: 100%;
+    text-shadow: none;
+  }
 }
 
 /**
@@ -146,11 +165,8 @@
   padding-top: .9em;
   color: darken(color("medium-grey"), 10%);
 
-  .item__heading:hover &
+  .item__heading:hover &,
   .item__heading:focus & {
-    &:hover,
-    &:focus {
-      text-shadow: none;
-    }
+    text-shadow: none;
   }
 }

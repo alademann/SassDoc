@@ -8,7 +8,7 @@
       <ul class="list-unstyled list-annotations">
     {% endif %}
 
-    <li><a href="#{{ require.context.type }}-{{ require.context.name }}"><code>{{ require.context.name }}</code></a></li>
+    <li><a href="#{{ require.context.type }}-{{ require.context.name }}"><code>{% if require.context.type == 'variable' %}${% else %}<i class="text-muted">@{{ require.context.type }}</i> <strong>{% endif %}{{ require.context.name }}{% if require.context.type != 'variable' %}</strong>{% endif %}</code></a></li>
   {% endif %}
 
 {% endfor %}
