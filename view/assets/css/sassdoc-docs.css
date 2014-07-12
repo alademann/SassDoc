@@ -429,61 +429,77 @@ a:hover code, a:focus code {
 
 /* line 89, ../../scss/partials/_item.scss */
 .wdesk-sassdoc-section > .item__sub-heading {
+  color: #666;
   margin-bottom: .5em;
-  margin-top: 1em;
+  margin-top: 2em;
   text-transform: uppercase;
   font-size: 1em; }
 
 /**
  * Function name
  */
-/* line 100, ../../scss/partials/_item.scss */
+/* line 101, ../../scss/partials/_item.scss */
 .wdesk-sassdoc-section > .item__heading {
+  color: #444;
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
   position: relative; }
-  /* line 107, ../../scss/partials/_item.scss */
+  /* line 109, ../../scss/partials/_item.scss */
   .wdesk-sassdoc-section > .item__heading code {
     background-color: transparent;
     text-shadow: none; }
 
 /**
+ * Tables
+ */
+/* line 119, ../../scss/partials/_item.scss */
+.table code {
+  background-color: transparent;
+  font-size: 100%; }
+/* line 123, ../../scss/partials/_item.scss */
+.table :not(pre) > code[class*="language-"] {
+  white-space: nowrap; }
+
+/**
  * Parameters table
  */
-/* line 116, ../../scss/partials/_item.scss */
+/* line 131, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 121, ../../scss/partials/_item.scss */
+  /* line 136, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dddddd;
-    border-top: none;
-    text-align: left; }
-  /* line 128, ../../scss/partials/_item.scss */
+    text-align: left;
+    font-weight: normal;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  /* line 144, ../../scss/partials/_item.scss */
+  .item__parameters th[scope="row"] code {
+    font-weight: bold; }
+  /* line 148, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
-    padding: .5em;
+    padding-top: 1em;
     vertical-align: top; }
 
 @media (min-width: 601px) {
-  /* line 135, ../../scss/partials/_item.scss */
+  /* line 155, ../../scss/partials/_item.scss */
   tbody > .item__parameter:first-of-type > td {
     border-top: none; }
 
-  /* line 139, ../../scss/partials/_item.scss */
+  /* line 159, ../../scss/partials/_item.scss */
   .item__parameters td,
   .item__parameters th {
     border-top: 1px solid #dddddd; }
-    /* line 143, ../../scss/partials/_item.scss */
+    /* line 163, ../../scss/partials/_item.scss */
     .item__parameters td:first-of-type,
     .item__parameters th:first-of-type {
       padding-left: 0; } }
 /**
  * Scope/access
  */
-/* line 152, ../../scss/partials/_item.scss */
+/* line 172, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -492,12 +508,12 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 161, ../../scss/partials/_item.scss */
+/* line 181, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 167, ../../scss/partials/_item.scss */
+  /* line 187, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }

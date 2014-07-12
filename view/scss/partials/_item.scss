@@ -1,35 +1,4 @@
 /**
- * Item
- */
-// .item {
-//   & + & {
-//     margin: 4em 0;
-//   }
-
-//   p {
-//     margin: 0 0 .5em 0;
-//   }
-// }
-
-/**
- * Name
- */
-// .item__name {
-//   color: color("dark-grey")
-// }
-
-
-/**
- * Code blocks
- */
-// .item__code {
-//   border-left: .3em solid color("pink");
-//   word-wrap: break-word;
-//   margin-top: 1em !important;
-//   line-height: 1.42;
-// }
-
-/**
  * Anchor
  */
 .item__anchor {
@@ -88,8 +57,9 @@ a {
 
 .wdesk-sassdoc-section > .item__sub-heading {
   // color: color("green");
+  color: #666;
   margin-bottom: .5em;
-  margin-top: 1em;
+  margin-top: 2em;
   text-transform: uppercase;
   font-size: 1em;
 }
@@ -99,6 +69,7 @@ a {
  */
 .wdesk-sassdoc-section > .item__heading {
   // color: color("dark-grey");
+  color: #444;
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
@@ -107,6 +78,19 @@ a {
   code {
     background-color: transparent;
     text-shadow: none;
+  }
+}
+
+/**
+ * Tables
+ */
+.table {
+  code {
+    background-color: transparent;
+    font-size: 100%;
+  }
+  :not(pre) > code[class*="language-"] {
+    white-space: nowrap;
   }
 }
 
@@ -120,29 +104,19 @@ a {
 
   > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid color("medium-grey");
-    border-top: none;
     text-align: left;
+    font-weight: normal;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  // row scoped headers are parameter names... so let's beef 'em up
+  th[scope="row"] code {
+    font-weight: bold;
   }
 
   td, th {
-    padding: .5em;
+    padding-top: 1em; // ensure text is vertically centered in rows where there is only one line of text
     vertical-align: top;
-  }
-}
-
-@include respond-to("medium") {
-  tbody > .item__parameter:first-of-type > td {
-    border-top: none;
-  }
-
-  .item__parameters td,
-  .item__parameters th {
-    border-top: 1px solid color("medium-grey");
-
-    &:first-of-type {
-      padding-left: 0;
-    }
   }
 }
 
