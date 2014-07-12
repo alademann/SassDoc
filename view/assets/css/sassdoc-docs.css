@@ -231,11 +231,6 @@ pre[class*="language-"] {
   margin: .5em 0;
   overflow: auto; }
 
-/* line 56, ../../scss/vendors/_prism.scss */
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: #f5f2f0; }
-
 /* Inline code */
 /* line 62, ../../scss/vendors/_prism.scss */
 :not(pre) > code[class*="language-"] {
@@ -355,6 +350,19 @@ pre[class*='language-'] > code[data-language]::before {
 /* line 4, ../../scss/partials/_main.scss */
 .wdesk-sassdoc-main {
   font-size: 1.6rem; }
+
+/* line 10, ../../scss/partials/_main.scss */
+.page-api .highlight {
+  padding: 0; }
+  /* line 13, ../../scss/partials/_main.scss */
+  .page-api .highlight pre {
+    padding: 1em;
+    margin: 0; }
+    /* line 18, ../../scss/partials/_main.scss */
+    .page-api .highlight pre[class*='language-'] > code[data-language]::before {
+      background-color: transparent;
+      opacity: .2;
+      font-size: 12px; }
 
 /**
  * Item
