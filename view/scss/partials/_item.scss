@@ -1,33 +1,33 @@
 /**
  * Item
  */
-.item {
-  & + & {
-    margin: 4em 0;
-  }
+// .item {
+//   & + & {
+//     margin: 4em 0;
+//   }
 
-  p {
-    margin: 0 0 .5em 0;
-  }
-}
+//   p {
+//     margin: 0 0 .5em 0;
+//   }
+// }
 
 /**
  * Name
  */
-.item__name {
-  color: color("dark-grey")
-}
+// .item__name {
+//   color: color("dark-grey")
+// }
 
 
 /**
  * Code blocks
  */
-.item__code {
-  border-left: .3em solid color("pink");
-  word-wrap: break-word;
-  margin-top: 1em !important;
-  line-height: 1.42;
-}
+// .item__code {
+//   border-left: .3em solid color("pink");
+//   word-wrap: break-word;
+//   margin-top: 1em !important;
+//   line-height: 1.42;
+// }
 
 /**
  * Anchor
@@ -65,7 +65,7 @@
 
 /**
  * Aliases
- */ 
+ */
 .item__alias,
 .item__aliased {
   color: color("medium-grey");
@@ -74,7 +74,7 @@
 
 
 .item__sub-heading {
-  color: color("green");
+  // color: color("green");
   margin-bottom: .5em;
   margin-top: 1em;
   text-transform: uppercase;
@@ -121,7 +121,7 @@
   .item__parameters td,
   .item__parameters th {
     border-top: 1px solid color("medium-grey");
-    
+
     &:first-of-type {
       padding-left: 0;
     }
@@ -130,7 +130,7 @@
 
 /**
  * Scope/access
- */ 
+ */
 .item__access {
   text-transform: capitalize;
   color: color("purple");
@@ -145,4 +145,12 @@
   font-size: .5em;
   padding-top: .9em;
   color: darken(color("medium-grey"), 10%);
+
+  .item__heading:hover &
+  .item__heading:focus & {
+    &:hover,
+    &:focus {
+      text-shadow: none;
+    }
+  }
 }

@@ -1,32 +1,7 @@
 /**
  * Main wrapper
  */
-.main {
-  background: color("light-grey");
-  position: relative;
-  padding-bottom: 3em;
-
-  @include respond-to("medium") {
-    padding-left: 2em;
-    width: 75%;
-    float: right;
-    padding-top: .9em;
-    min-height: 45em;
-  }
+.wdesk-sassdoc-main {
+  font-size: 1.6rem;
 }
 
-/**
- * Main titles
- */
-.main__heading {
-  color: color("dark-grey");
-  padding: .5em;
-  margin-top: 0;
-  text-transform: uppercase;
-  border-bottom: .3em solid color("pink");
-  font-size: 2em;
-
-  @include respond-to("medium") {
-    padding: .5em 0;
-  }
-}
