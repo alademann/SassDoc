@@ -38,7 +38,7 @@
             {# Display item #}
             {% set partial = "../includes/items/" + type + ".html.swig" %}
 
-            <section id="{{ item.context.type }}-{{ item.context.name }}-section" class="wdesk-docs-section wdesk-sassdocs-section main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}">
+            <section id="{{ item.context.type }}-{{ item.context.name }}-section" class="wdesk-docs-section wdesk-sassdoc-section main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}">
               {% include partial with { item: item, display: display } %}
             </section>
 
