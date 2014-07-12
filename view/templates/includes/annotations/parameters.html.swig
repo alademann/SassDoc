@@ -2,32 +2,39 @@
   <h3 class="item__sub-heading">Parameters</h3>
 
   <table class="item__parameters">
+    <caption class="sr-only">Lists the parameters for the {{ item.name }} {{ item.type }}</caption>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Default value</th>
+        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
       {% for parameter in item.parameters %}
         <tr class="item__parameter">
-          <td data-label="name"><code>${{ parameter.name }}</code></td>
-          <td data-label="desc">{{ parameter.description | markdown | default('&mdash;') | safe }}</td>
+          <th scope="row" data-label="name">
+            <code class="language-scss">${{ parameter.name }}</code>
+          </th>
           <td data-label="type">
-          {% if parameter.type == '*' %}
-            Any
-          {% else %}
-            {{ parameter.type | split('|') | trim | capitalize | join(', ')}}
-          {% endif %}
+            <code class="language-scss">
+              {% if parameter.type == '*' %}
+                Any
+              {% else %}
+                {{ parameter.type | split('|') | trim | capitalize | join(', ')}}
+              {% endif %}
+            </code>
           </td>
           <td data-label="default">
           {% if not parameter.default %}
-            &mdash;
+            <i class="text-muted">&mdash;<i class="sr-only"> no default value</i></i>
           {% else %}
-            <code>{{ parameter.default }}</code>
+            <code class="language-scss">{{ parameter.default }}</code>
           {% endif %}
+          </td>
+          <td data-label="desc">
+            {{ parameter.description | markdown | default('&mdash;') | safe }}
           </td>
         </tr>
       {% endfor %}
