@@ -1,0 +1,418 @@
+/**
+ * Sass utils
+ */
+/**
+ * Map of colors for quick grabbing.
+ * See `_functions.scss` -> `color()` function.
+ *
+ * @type Map
+ */
+/**
+ * Map of breakpoints for responsive design.
+ * See `_functions.scss` -> `respond-to()` function.
+ *
+ * @type Map
+ */
+/** 
+ * Z-indexes layers.
+ * See `_functions.scss` -> `z()` function.
+ * 
+ * @type Map
+ */
+/**
+ * Returns the opposite direction of every direction in `$directions`.
+ *
+ * @param {List} $directions - Positions to revert
+ *
+ * @throws No opposite direction found for `$direction`.
+ *
+ * @return {List | Null}
+ */
+/**
+ * Clamp `$value` between `$min` and `$max`.
+ *
+ * @param {Number} $value - Value to clamp between `$min` and `$max`
+ * @param {Number} $min   - Minimum value
+ * @param {Number} $max   - Maximum value
+ *
+ * @throws All parameters must be numbers for `clamp`.
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Helper to manage `z-index`.
+ * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
+ * If found, returns it, else returns `null`.
+ *
+ * @ignore requires {variable} $z-indexes
+ *
+ * @example scss
+ * z-index: z("default")
+ *
+ * @param {String} $layer - Layer
+ *
+ * @throws No z-index found for `$layer`.
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Color getter.
+ *
+ * @ignore requires {variable} $colors
+ *
+ * @example scss
+ * color: color("pink");
+ *
+ * @param {String} $color - Color to fetch
+ *
+ * @throws No color found for `$color`. Please make sure it is defined in `$colors` map.
+ *
+ * @return {Color | Null}
+ */
+/**
+ * Tests whether the value is a valid length.
+ *
+ * @param {*} $value - Value to test
+ *
+ * @return {Bool}
+ */
+/**
+ * Mixin to size elements.
+ *
+ * @param {Number} $width           - Width
+ * @param {Number} $height ($width) - Height
+ */
+/**
+ * Shorthand for positioning.
+ * @link http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/ Documentation
+ *
+ * @access private
+ *
+ * @requires is-valid-length
+ *
+ * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
+ * @param {List}   $args     (()) - List of offsets and values
+ *
+ * @throws Invalid value `$next` for offset `$offset`.
+ */
+/**
+ * Shorthand for absolute positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ */
+/**
+ * Shorthand for relative positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ */
+/**
+ * Shorthand for fixed positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ */
+/**
+ * Responsive manager.
+ *
+ * @ignore requires {variable} $breakpoints
+ *
+ * @param {String} $breakpoint - Breakpoint
+ *
+ * @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+ */
+/**
+ * Mixin to fake CSS triangles with border hacks.
+ *
+ * @requires {mixin} absolute
+ * @requires {mixin} size
+ * @requires {function} opposite-direction
+ * @requires {function} z
+ *
+ * @param {String} $direction                - Triangle direction
+ * @param {List}   $position                 - Triangle position
+ * @param {Color}  $color     (currentcolor) - Triangle color
+ * @param {Number} $size      (1em)          - Triangle size
+ *
+ * @throws Direction must be one of top, right, bottom or left.
+ */
+/**
+ * Mixin to handle cross browser keyframes for CSS animations.
+ *
+ * @param {String} $name - Animation name
+ */
+/**
+ * Mixin to prefix properties that are not prefixed by Compass
+ *
+ * @param {String} $property                   - Property to prefix
+ * @param {*}      $value                      - Value for property
+ * @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
+ */
+/**
+ * Mixin for cross-browser opacity (IE 8).
+ * Clamps the value between 0 and 1.
+ *
+ * @requires {function} clamp
+ *
+ * @param {Number} $opacity - Opacity level, between 0 and 1
+ */
+/*
+ * Mixin handling inline-block and vertical-align at once.
+ * If no align is specified, then the `vertical-align` property won't be output.
+ *
+ * @param {String} $align (null) - Vertical align
+ */
+/**
+ * Float clearing helper.
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ */
+/**
+ * Vendors
+ */
+/* http://prismjs.com/download.html?themes=prism&languages=css+scss */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+/* Code blocks */
+/* line 9, ../../scss/vendors/_prism.scss */
+pre[class*="language-"] {
+  font-size: 1em;
+  padding: 1em;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+/* Inline code */
+/* line 22, ../../scss/vendors/_prism.scss */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em; }
+
+/* line 27, ../../scss/vendors/_prism.scss */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999; }
+
+/* line 34, ../../scss/vendors/_prism.scss */
+.token.punctuation {
+  color: inherit; }
+
+/* line 38, ../../scss/vendors/_prism.scss */
+.namespace {
+  opacity: .7; }
+
+/* line 42, ../../scss/vendors/_prism.scss */
+.token.number {
+  color: #FF6600; }
+
+/* line 46, ../../scss/vendors/_prism.scss */
+.token.property,
+.token.tag,
+.token.boolean {
+  color: #2f6f9f; }
+
+/* line 52, ../../scss/vendors/_prism.scss */
+.token.constant,
+.token.symbol {
+  color: #FFCC33; }
+
+/* line 57, ../../scss/vendors/_prism.scss */
+.token.selector,
+.token.attr-name {
+  color: #00AA88; }
+
+/* line 62, ../../scss/vendors/_prism.scss */
+.token.string,
+.token.url {
+  color: #CC3300; }
+
+/* line 67, ../../scss/vendors/_prism.scss */
+.token.builtin {
+  color: #336666; }
+
+/* line 71, ../../scss/vendors/_prism.scss */
+.token.operator {
+  color: #555555; }
+
+/* line 75, ../../scss/vendors/_prism.scss */
+.token.entity,
+.language-css .token.string,
+.style .token.string {
+  color: #999999; }
+
+/* line 81, ../../scss/vendors/_prism.scss */
+.token.variable {
+  color: #006699; }
+
+/* line 85, ../../scss/vendors/_prism.scss */
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #006699; }
+
+/* line 92, ../../scss/vendors/_prism.scss */
+.token.regex,
+.token.important {
+  color: #33AAAA; }
+
+/* line 97, ../../scss/vendors/_prism.scss */
+.token.important {
+  font-weight: bold; }
+
+/* line 101, ../../scss/vendors/_prism.scss */
+.token.entity {
+  cursor: help; }
+
+/**
+ * Base stuff
+ */
+/**
+ * Partials
+ */
+/**
+ * Item
+ */
+/**
+ * Name
+ */
+/**
+ * Code blocks
+ */
+/**
+ * Anchor
+ */
+/* line 35, ../../scss/partials/_item.scss */
+.item__anchor {
+  font-size: .6em;
+  color: #dfa0bf; }
+  @media (min-width: 601px) {
+    /* line 35, ../../scss/partials/_item.scss */
+    .item__anchor {
+      position: absolute;
+      right: 101%;
+      bottom: 0.25em;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      opacity: 0; }
+      /* line 43, ../../scss/partials/_item.scss */
+      .item:hover .item__anchor {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        opacity: 1; } }
+
+/**
+ * Deprecated flag
+ */
+/* line 52, ../../scss/partials/_item.scss */
+.item__deprecated strong {
+  color: #cc0000;
+  text-transform: uppercase; }
+
+/**
+ * Type
+ */
+/* line 60, ../../scss/partials/_item.scss */
+.item__type {
+  color: #dddddd;
+  text-transform: capitalize;
+  font-size: .75em; }
+
+/**
+ * Aliases
+ */
+/* line 69, ../../scss/partials/_item.scss */
+.item__alias,
+.item__aliased {
+  color: #dddddd;
+  font-size: .8em; }
+
+/* line 76, ../../scss/partials/_item.scss */
+.item__sub-heading {
+  margin-bottom: .5em;
+  margin-top: 1em;
+  text-transform: uppercase;
+  font-size: 1em; }
+
+/**
+ * Function name
+ */
+/* line 87, ../../scss/partials/_item.scss */
+.item__heading {
+  color: #444444;
+  font-size: 2.2em;
+  margin: 0 0 .5em 0;
+  font-weight: normal;
+  position: relative; }
+
+/**
+ * Parameters table
+ */
+/* line 98, ../../scss/partials/_item.scss */
+.item__parameters {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse; }
+  /* line 103, ../../scss/partials/_item.scss */
+  .item__parameters > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dddddd;
+    border-top: none;
+    text-align: left; }
+  /* line 110, ../../scss/partials/_item.scss */
+  .item__parameters td, .item__parameters th {
+    padding: .5em;
+    vertical-align: top; }
+
+@media (min-width: 601px) {
+  /* line 117, ../../scss/partials/_item.scss */
+  tbody > .item__parameter:first-of-type > td {
+    border-top: none; }
+
+  /* line 121, ../../scss/partials/_item.scss */
+  .item__parameters td,
+  .item__parameters th {
+    border-top: 1px solid #dddddd; }
+    /* line 125, ../../scss/partials/_item.scss */
+    .item__parameters td:first-of-type,
+    .item__parameters th:first-of-type {
+      padding-left: 0; } }
+/**
+ * Scope/access
+ */
+/* line 134, ../../scss/partials/_item.scss */
+.item__access {
+  text-transform: capitalize;
+  color: #998099;
+  font-size: .8em; }
+
+/**
+ * Since
+ */
+/* line 143, ../../scss/partials/_item.scss */
+.item__since {
+  float: right;
+  font-size: .5em;
+  padding-top: .9em;
+  color: #c4c4c4; }
+  /* line 151, ../../scss/partials/_item.scss */
+  .item__heading:hover .item__since
+  .item__heading:focus .item__since:hover, .item__heading:hover .item__since
+  .item__heading:focus .item__since:focus {
+    text-shadow: none; }
