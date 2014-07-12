@@ -30,11 +30,11 @@
 
   {% include '../annotations/description.html.swig' %}
 
+  {% include '../annotations/example.html.swig' %}
+
   {% include '../annotations/parameters.html.swig' %}
 
   {% include '../annotations/returns.html.swig' %}
-
-  {% include '../annotations/example.html.swig' %}
 
   {% include '../annotations/throws.html.swig' %}
 
