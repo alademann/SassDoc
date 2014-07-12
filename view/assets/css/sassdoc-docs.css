@@ -275,8 +275,7 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #a67f59;
-  background: rgba(255, 255, 255, 0.5); }
+  color: #a67f59; }
 
 /* line 108, ../../scss/vendors/_prism.scss */
 .token.atrule,
@@ -447,46 +446,56 @@ a:hover code, a:focus code {
  * Tables
  */
 /* line 91, ../../scss/partials/_item.scss */
-.table code {
+.table td > code,
+.table th > code {
   background-color: transparent;
   font-size: 100%; }
-/* line 95, ../../scss/partials/_item.scss */
+/* line 96, ../../scss/partials/_item.scss */
+.table td p code,
+.table th p code {
+  font-size: 93%; }
+/* line 100, ../../scss/partials/_item.scss */
 .table :not(pre) > code[class*="language-"] {
   white-space: nowrap; }
 
 /**
  * Parameters table
  */
-/* line 103, ../../scss/partials/_item.scss */
+/* line 108, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 108, ../../scss/partials/_item.scss */
+  /* line 113, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
     text-align: left;
     font-weight: normal;
+    white-space: nowrap;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 116, ../../scss/partials/_item.scss */
+  /* line 122, ../../scss/partials/_item.scss */
   .item__parameters th[scope="row"] code {
     font-weight: bold; }
-  /* line 120, ../../scss/partials/_item.scss */
+  /* line 126, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding-top: 1em;
+    padding-bottom: 1em;
     vertical-align: top; }
+    /* line 131, ../../scss/partials/_item.scss */
+    .item__parameters td > p:last-child, .item__parameters th > p:last-child {
+      margin-bottom: 0; }
 
 /**
  * Annotation list items
  */
-/* line 129, ../../scss/partials/_item.scss */
+/* line 140, ../../scss/partials/_item.scss */
 .list-annotations > li {
   margin: .4em 0; }
 
 /**
  * Scope/access
  */
-/* line 136, ../../scss/partials/_item.scss */
+/* line 147, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -495,12 +504,12 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 145, ../../scss/partials/_item.scss */
+/* line 156, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 151, ../../scss/partials/_item.scss */
+  /* line 162, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }

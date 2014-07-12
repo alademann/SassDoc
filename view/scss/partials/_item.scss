@@ -88,9 +88,14 @@ a {
  * Tables
  */
 .table {
-  code {
+  td > code,
+  th > code {
     background-color: transparent;
     font-size: 100%;
+  }
+  td p code,
+  th p code {
+    font-size: 93%; // match the font size of the <p> its nested within
   }
   :not(pre) > code[class*="language-"] {
     white-space: nowrap;
@@ -109,6 +114,7 @@ a {
     vertical-align: bottom;
     text-align: left;
     font-weight: normal;
+    white-space: nowrap;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
@@ -118,8 +124,13 @@ a {
   }
 
   td, th {
-    padding-top: 1em; // ensure text is vertically centered in rows where there is only one line of text
+    padding-top: 1em;
+    padding-bottom: 1em;
     vertical-align: top;
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

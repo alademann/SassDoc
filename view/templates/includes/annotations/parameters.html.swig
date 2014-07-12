@@ -35,7 +35,7 @@
             {% endif %}
             </td>
             <td data-label="desc">
-              {{ parameter.description | markdown | default('&mdash;') | safe }}
+              {{ parameter.description | markdown | default('<i class="text-muted">&mdash;<i class="sr-only"> no default value</i></i>') | safe }}
             </td>
           </tr>
         {% endfor %}
