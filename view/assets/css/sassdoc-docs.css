@@ -365,46 +365,37 @@ pre[class*='language-'] > code[data-language]::before {
       font-size: 12px; }
 
 /**
- * Item
- */
-/**
- * Name
- */
-/**
- * Code blocks
- */
-/**
  * Anchor
  */
-/* line 35, ../../scss/partials/_item.scss */
+/* line 4, ../../scss/partials/_item.scss */
 .item__anchor {
   font-size: .6em;
   color: #dfa0bf; }
   @media (min-width: 601px) {
-    /* line 35, ../../scss/partials/_item.scss */
+    /* line 4, ../../scss/partials/_item.scss */
     .item__anchor {
       position: absolute;
       right: 101%;
       bottom: 0.25em;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
       opacity: 0; }
-      /* line 43, ../../scss/partials/_item.scss */
+      /* line 12, ../../scss/partials/_item.scss */
       .item:hover .item__anchor {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
         opacity: 1; } }
 
-/* line 49, ../../scss/partials/_item.scss */
+/* line 18, ../../scss/partials/_item.scss */
 code .text-muted {
   color: #bb647a !important; }
 
-/* line 56, ../../scss/partials/_item.scss */
+/* line 25, ../../scss/partials/_item.scss */
 a:hover code, a:focus code {
   text-decoration: underline; }
 
 /**
  * Deprecated flag
  */
-/* line 65, ../../scss/partials/_item.scss */
+/* line 34, ../../scss/partials/_item.scss */
 .item__deprecated strong {
   color: #cc0000;
   text-transform: uppercase; }
@@ -412,7 +403,7 @@ a:hover code, a:focus code {
 /**
  * Type
  */
-/* line 73, ../../scss/partials/_item.scss */
+/* line 42, ../../scss/partials/_item.scss */
 .item__type {
   color: #dddddd;
   text-transform: capitalize;
@@ -421,13 +412,13 @@ a:hover code, a:focus code {
 /**
  * Aliases
  */
-/* line 82, ../../scss/partials/_item.scss */
+/* line 51, ../../scss/partials/_item.scss */
 .item__alias,
 .item__aliased {
   color: #dddddd;
   font-size: .8em; }
 
-/* line 89, ../../scss/partials/_item.scss */
+/* line 58, ../../scss/partials/_item.scss */
 .wdesk-sassdoc-section > .item__sub-heading {
   color: #666;
   margin-bottom: .5em;
@@ -438,68 +429,55 @@ a:hover code, a:focus code {
 /**
  * Function name
  */
-/* line 101, ../../scss/partials/_item.scss */
+/* line 70, ../../scss/partials/_item.scss */
 .wdesk-sassdoc-section > .item__heading {
-  color: #444;
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
   position: relative; }
-  /* line 109, ../../scss/partials/_item.scss */
+  /* line 77, ../../scss/partials/_item.scss */
   .wdesk-sassdoc-section > .item__heading code {
+    color: #444;
     background-color: transparent;
     text-shadow: none; }
 
 /**
  * Tables
  */
-/* line 119, ../../scss/partials/_item.scss */
+/* line 88, ../../scss/partials/_item.scss */
 .table code {
   background-color: transparent;
   font-size: 100%; }
-/* line 123, ../../scss/partials/_item.scss */
+/* line 92, ../../scss/partials/_item.scss */
 .table :not(pre) > code[class*="language-"] {
   white-space: nowrap; }
 
 /**
  * Parameters table
  */
-/* line 131, ../../scss/partials/_item.scss */
+/* line 100, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 136, ../../scss/partials/_item.scss */
+  /* line 105, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
     text-align: left;
     font-weight: normal;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 144, ../../scss/partials/_item.scss */
+  /* line 113, ../../scss/partials/_item.scss */
   .item__parameters th[scope="row"] code {
     font-weight: bold; }
-  /* line 148, ../../scss/partials/_item.scss */
+  /* line 117, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding-top: 1em;
     vertical-align: top; }
 
-@media (min-width: 601px) {
-  /* line 155, ../../scss/partials/_item.scss */
-  tbody > .item__parameter:first-of-type > td {
-    border-top: none; }
-
-  /* line 159, ../../scss/partials/_item.scss */
-  .item__parameters td,
-  .item__parameters th {
-    border-top: 1px solid #dddddd; }
-    /* line 163, ../../scss/partials/_item.scss */
-    .item__parameters td:first-of-type,
-    .item__parameters th:first-of-type {
-      padding-left: 0; } }
 /**
  * Scope/access
  */
-/* line 172, ../../scss/partials/_item.scss */
+/* line 126, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -508,12 +486,12 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 181, ../../scss/partials/_item.scss */
+/* line 135, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 187, ../../scss/partials/_item.scss */
+  /* line 141, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }
