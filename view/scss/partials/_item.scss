@@ -124,6 +124,13 @@ a {
 }
 
 /**
+ * Annotation list items
+ */
+.list-annotations > li {
+  margin: .4em 0;
+}
+
+/**
  * Scope/access
  */
 .item__access {

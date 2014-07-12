@@ -437,47 +437,56 @@ a:hover code, a:focus code {
   position: relative; }
   /* line 77, ../../scss/partials/_item.scss */
   .wdesk-sassdoc-section > .item__heading code {
-    color: #444;
     background-color: transparent;
     text-shadow: none; }
+  /* line 82, ../../scss/partials/_item.scss */
+  .wdesk-sassdoc-section > .item__heading .item__name {
+    color: #444; }
 
 /**
  * Tables
  */
-/* line 88, ../../scss/partials/_item.scss */
+/* line 91, ../../scss/partials/_item.scss */
 .table code {
   background-color: transparent;
   font-size: 100%; }
-/* line 92, ../../scss/partials/_item.scss */
+/* line 95, ../../scss/partials/_item.scss */
 .table :not(pre) > code[class*="language-"] {
   white-space: nowrap; }
 
 /**
  * Parameters table
  */
-/* line 100, ../../scss/partials/_item.scss */
+/* line 103, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 105, ../../scss/partials/_item.scss */
+  /* line 108, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
     text-align: left;
     font-weight: normal;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 113, ../../scss/partials/_item.scss */
+  /* line 116, ../../scss/partials/_item.scss */
   .item__parameters th[scope="row"] code {
     font-weight: bold; }
-  /* line 117, ../../scss/partials/_item.scss */
+  /* line 120, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding-top: 1em;
     vertical-align: top; }
 
 /**
+ * Annotation list items
+ */
+/* line 129, ../../scss/partials/_item.scss */
+.list-annotations > li {
+  margin: .4em 0; }
+
+/**
  * Scope/access
  */
-/* line 126, ../../scss/partials/_item.scss */
+/* line 136, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -486,12 +495,12 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 135, ../../scss/partials/_item.scss */
+/* line 145, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 141, ../../scss/partials/_item.scss */
+  /* line 151, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }
