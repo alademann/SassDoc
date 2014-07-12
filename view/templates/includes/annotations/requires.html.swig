@@ -5,7 +5,7 @@
     {% if not title_displayed %}
       {% set title_displayed = true %}
       <h3 class="item__sub-heading">Requires</h3>
-      <ul class="list-unstyled">
+      <ul class="list-unstyled list-annotations">
     {% endif %}
 
     <li><a href="#{{ require.context.type }}-{{ require.context.name }}"><code>{{ require.context.name }}</code></a></li>

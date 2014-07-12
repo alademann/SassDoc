@@ -1,7 +1,7 @@
 {% if item.link.length > 0 %}
   <h3 class="item__sub-heading">Links</h3>
 
-  <ul class="list-unstyled">
+  <ul class="list-unstyled list-annotations">
   {% for link in item.link %}
     <li>
       <a target="_blank" href="{{ link.url }}">
