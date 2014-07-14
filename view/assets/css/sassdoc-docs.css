@@ -343,6 +343,17 @@ pre[class*='language-'] > code[data-language]::before {
 /**
  * Partials
  */
+/* line 2, ../../scss/partials/_sidebar.scss */
+.wdesk-docs-sidebar .nav > li > .hitarea > .sidebar__annotation {
+  font-weight: normal !important;
+  color: #ccc !important; }
+  /* line 6, ../../scss/partials/_sidebar.scss */
+  .wdesk-docs-sidebar .nav > li > .hitarea > .sidebar__annotation:before {
+    content: "("; }
+  /* line 7, ../../scss/partials/_sidebar.scss */
+  .wdesk-docs-sidebar .nav > li > .hitarea > .sidebar__annotation:after {
+    content: ")"; }
+
 /**
  * Main wrapper
  */
