@@ -38,6 +38,20 @@
             </ul>
         </div>
 
+        <form class="sassdoc__searchbar searchbar dropdown">
+            <fieldset class="searchbar__form" id="js-search">
+                <label for="js-search-input" class="visually-hidden">Search</label>
+                <input type="search" name="search" id="js-search-input"
+                       placeholder="Search"
+                       class="searchbar__field form-control"
+                       autocomplete="off"
+                       autofocus
+                       aria-haspopup="true"
+                       aria-expanded="true">
+                <ul role="menu" id="js-search-suggestions" class="searchbar__suggestions dropdown-menu"></ul>
+            </fieldset>
+        </form>
+
         <ul class="nav navbar-nav nav-blocks docs-options-nav pull-right">
             <li>
                 <button type="button" class="hitarea no-text"
