@@ -161,7 +161,7 @@ exports = module.exports = {
         Object.keys(data).forEach(function (key) {
           data[key].forEach(function (item) {
             item.file = {
-              path: utils.getDisplayPath(file, exports.folder.base),
+              path: path.relative(exports.folder.base, file),
               name: path.basename(file, '.scss')
             };
           });
@@ -209,13 +209,13 @@ exports = module.exports = {
    * @param {String} folder - folder path
    */
   getData: function (folder) {
-    exports.folder.base = path.basename(folder);
+    exports.folder.base = folder;
 
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
 
-      logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
-
+      var key;
+      var itemCount = 0;
       var result = {};
       var index = {};
 
@@ -267,7 +267,12 @@ exports = module.exports = {
         // Requires
         if (utils.isset(item.requires)) {
           item.requires = item.requires.map(function (req) {
+            if ( req.external === true ) {
+              return req;
+            } // Just return itself
+
             var lookupKey = req.type + '_' + req.name;
+
             if (utils.isset(index[lookupKey])) {
               var reqItem = index[lookupKey];
 
@@ -276,18 +281,44 @@ exports = module.exports = {
               }
 
               reqItem.usedBy.push(item);
-
-              return reqItem;
+              req.item = reqItem;
             }
 
             else {
               logger.log('Item `' + item.context.name + '` requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
+            }
+
+            return req;
+
+          }).filter(function (item) {
+            return typeof item !== 'undefined';
+          });
+        }
+
+        // See
+        if (utils.isset(item.see)) {
+          item.see = item.see.map(function (see) {
+            var lookupKey = see.type + '_' + see.name;
+
+            if (utils.isset(index[lookupKey])) {
+              return index[lookupKey];
+            }
+
+            else {
+              logger.log('Item `' + item.context.name + '` refers to `' + see.name + '` from type `' + see.type + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
             return typeof item !== 'undefined';
           });
         }
       });
+
+      // Item count
+      for (key in result) {
+        itemCount += result[key].length;
+      }
+
+      logger.log(itemCount + ' item' + (itemCount > 1 ? 's' : '') + ' documented.');
 
       return result;
     });

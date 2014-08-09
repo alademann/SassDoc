@@ -1,5 +1,67 @@
 # Changelog
 
+## 1.1.6
+
+* Backport, fixed `found-at` with absolute path ([#156](https://github.com/SassDoc/sassdoc/pull/156))
+
+## 1.1.5
+
+* Fixed `@example` not being printed for variables ([#146](https://github.com/SassDoc/sassdoc/pull/146))
+
+## 1.1.4
+
+* Fixed some visual issues with `@requires` ([#132](https://github.com/SassDoc/sassdoc/pull/132))
+
+## 1.1.3
+
+* Removed a duplicated `deprecated` flag in the view
+
+## 1.1.2
+
+* Fixed a bug with relative path to `package.json` file
+
+## 1.1.1
+
+* Fixed a small issue with display path, sometimes adding an extra slash ([#68](https://github.com/SassDoc/sassdoc/issues/68))
+
+## 1.1.0
+
+* New design
+* Improved the `@requires` annotation to support external vendors, and custom URL ([#61](https://github.com/SassDoc/sassdoc/issues/61))
+* Added a search engine to the generated documentation ([#46](https://github.com/SassDoc/sassdoc/issues/46))
+* Fixed an issue with `@link` not working correctly ([#108](https://github.com/SassDoc/sassdoc/issues/108))
+* Added `examples` to `.gitignore`
+
+## 1.0.2
+
+* Fixed an issue with config path resolving to false ([#68](https://github.com/SassDoc/sassdoc/issues/68))
+
+## 1.0.1
+
+* Worked around a npm bug
+
+## 1.0.0
+
+* Fixed an issue with a missing dependency
+* Prevented a weird bug with require
+* Updated readme
+* Improved styles
+
+## 1.0.0-rc.19
+
+* Improved the way we deal with configuration resolving
+* Added an option to prevent the notifier check from happening
+
+## 1.0.0-rc.18
+
+* Merged `sassdoc-cli` back into the main repository
+
+## 1.0.0-rc.17
+
+* Fixed an issue with item count in console ([#102](https://github.com/SassDoc/sassdoc/issues/102))
+* Made parameters table headers WAI 2.0 compliant ([#101](https://github.com/SassDoc/sassdoc/pull/101))
+* Fixed a logic issue in the view
+
 ## 1.0.0-rc.16
 
 * Fixed a syntax highlighting issue with functions and mixins ([#99](https://github.com/SassDoc/sassdoc/pull/99))

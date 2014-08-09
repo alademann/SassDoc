@@ -12,10 +12,16 @@
 @import "vendors/prism";
 
 /**
+ * Base stuff
+ */
+@import "base/base";
+
+/**
  * Partials
  */
-// @import "partials/header";
+@import "partials/header";
+@import "partials/searchbar";
 @import "partials/sidebar";
 @import "partials/main";
-// @import "partials/footer";
+@import "partials/footer";
 @import "partials/item";

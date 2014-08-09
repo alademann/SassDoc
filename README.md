@@ -1,9 +1,89 @@
 # SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
 
-Like JSDoc, but for Sass files.
+Like JSDoc for your Sass files.
 
-Currently only work for `.scss` files.
-Also, inline comments are not parsed (`//`).
+![SassDoc](http://i.imgur.com/KKHdU7w.png)
+
+
+## Installation
+
+### npm
+
+```sh
+npm install -g sassdoc
+```
+
+### Grunt, Gulp, Broccoli
+
+See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc),
+[gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc),
+[broccoli-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
+
+
+## Usage
+
+### Command line
+
+```sh
+sassdoc <src> <dest> [options]
+```
+
+**Arguments:**
+
+1. `<src>` Path to your Sass folder.
+1. `<dest>` Path to the destination folder.
+
+**Options:**
+
+* `-h, --help`: Bring help.
+* `--version`: Show version.
+* `-v, --verbose`: Run in verbose mode.
+* `-c, --config`: Path to JSON file containing variables to be passed
+                  to the view.
+* ` --no-update-notifier`: Do not run the update notifier check.
+
+### Node
+
+#### Install
+
+```shell
+npm install sassdoc --save
+```
+
+#### Use The Raw Data
+
+```js
+var sassdoc = require('sassdoc');
+
+sassdoc.parse(__dirname + '/sass').then(function (items) {
+  console.log(items);
+})
+```
+
+#### Generate Documentation
+
+```js
+var config = {
+  "display": {
+    "access": ["public", "private"],
+    "alias": false,
+    "watermark": true
+  },
+
+  "package": "./package.json"
+}
+
+var sassdoc = require('sassdoc');
+sassdoc.documentize(source, dest, config);
+```
+
+## Documentating your items
+
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
+
+## Customising the view
+
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
 
 ## Example
 
@@ -45,129 +125,17 @@ Also, inline comments are not parsed (`//`).
 $legacy-support: true !global;
 ```
 
-### Preview
-
-![SassDoc](http://i.imgur.com/5i8QYB8.png)
-
-
-## Installation
-
-### npm
-
-```sh
-npm install -g sassdoc-cli
-```
-
-### Grunt
-
-See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
-
-## Usage
-
-### Command line
-
-```sh
-sassdoc <src> <dest> [options]
-```
-
-**Arguments:**
-
-1. `<src>` Path to your Sass folder.
-1. `<dest>` Path to the destination folder.
-
-**Options:**
-
-* `-h, --help`: Bring help.
-* `--version`: Show version.
-* `-v, --verbose`: Run in verbose mode.
-* `-c, --config`: Path to JSON file containing variables to be passed
-                  to the view.
-
-### Node
-
-#### Install
-
-```shell
-npm install sassdoc --save
-```
-
-#### Use The Raw Data
-
-```js
-var sassdoc = require('sassdoc');
-
-sassdoc.parse(__dirname + '/sass').then(function (items) {
-  console.log(items);
-})
-```
-
-#### Generate Documentation
-
-```js
-var config = {
-  "display": {
-    "access": ["public", "private"],
-    "alias": false,
-    "watermark": true
-  },
-
-  "package": "./package.json"
-}
-
-var sassdoc = require('sassdoc');
-sassdoc.documentize(source, dest, config);
-```
-
-## Documentation
-
-See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).
-
-## Pass extra variables to the view
-
-With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.
-
-Default path leads to `view/view.json`. You can update this file or make your own.
-
-Allowed variables:
-
-```json
-{
-  "display": {
-    "access": ["public", "private"],
-    "alias": false,
-    "watermark": true
-   },
-
-  "package": "./package.json"
-}
-```
-
-* (`Array`) `display.access`: access levels that should be displayed
-* (`Boolean`) `display.alias`: enable/disable display of alias items
-* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)
-* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object
-
-The package object (either direct or required) should ideally contain:
-
-* `title`: human name of your project
-* `name`: package name of your project (in case `title` is not defined)
-* `version`: your project's version
-* `license`: your project's license
-* `homepage`: URL to your project's homepage
-* `description`: description of your project
-
 ## Built with SassDoc
 
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
-* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel
+* [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
+* [yy](http://astina.github.io/yy/) from Astina
+* [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
 
 ## Credits
 
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
-
-With huge contributions from:
-
 * [Pascal Duez](https://twitter.com/pascalduez)

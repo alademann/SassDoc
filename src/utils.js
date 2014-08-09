@@ -1,24 +1,16 @@
 'use strict';
 
+var path = require('path');
+
 exports = module.exports = {
 
   /**
    * Get file extension
    * @param  {string} filename - filename to retrieve extension from
-   * @return {string}            extension
+   * @return {string} extension
    */
   getExtension: function (filename) {
-    return filename.split('.').pop().toLowerCase();
-  },
-
-  /**
-   * Get file display path, relative to the project directory
-   * @param  {string} filePath - file path
-   * @param  {string} baseDir  - project base directory
-   * @return {string}            display path
-   */
-  getDisplayPath: function (filePath, baseDir) {
-    return filePath.substr(filePath.indexOf(baseDir));
+    return path.extname(filename).substr(1);
   },
 
   /**
@@ -46,15 +38,6 @@ exports = module.exports = {
    */
   pad: function (value) {
     return (value < 10 ? '0' : '') + value;
-  },
-
-  /**
-   * Remove leading comment symbols from a line
-   * @param  {string} line - line to be purged
-   * @return {string}        new line
-   */
-  uncomment: function (line) {
-    return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
   },
 
   /**

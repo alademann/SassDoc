@@ -2,6 +2,7 @@
 
 var fs     = require('./file');
 var logger = require('./log');
+var cgf    = require('./cfg');
 
 exports = module.exports = {
 
@@ -21,6 +22,8 @@ exports = module.exports = {
    * @return {Q.promise}
    */
   documentize: function (source, destination, config) {
+    config = cgf(config);
+
     return fs.folder.refresh(destination)
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
@@ -38,7 +41,7 @@ exports = module.exports = {
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
-        console.log(err);
+        console.log(err.stack);
         throw new Error(err);
       });
   },

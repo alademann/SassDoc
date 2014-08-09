@@ -37,12 +37,12 @@
   <div class="container wdesk-docs-container sassdoc-container">
 
     {# Sidebar #}
-    <aside class="col-md-3 wdesk-docs-sidebar" role="nav">
+    <aside role="nav" class="sidebar col-md-3 wdesk-docs-sidebar">
       {% block sidebar %}{% endblock %}
     </aside>
 
     {# Main container #}
-    <article class="col-md-9 wdesk-docs-main wdesk-sassdoc-main" role="main">
+    <article role="main" class="col-md-9 wdesk-docs-main wdesk-sassdoc-main">
       {% block content %}{% endblock %}
     </article>
 

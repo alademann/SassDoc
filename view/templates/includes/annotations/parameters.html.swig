@@ -6,10 +6,10 @@
       <caption class="sr-only">Lists the parameters for the {{ item.name }} {{ item.type }}</caption>
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Type</th>
-          <th scope="col">Default value</th>
-          <th scope="col">Description</th>
+          <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Name</th>
+          <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Type</th>
+          <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Default value</th>
+          <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Description</th>
         </tr>
       </thead>
       <tbody>
