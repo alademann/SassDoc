@@ -7,10 +7,10 @@
  */
 $colors: (
   "pink":         #c6538c,
-  
+
   "light-purple": #e9e4f1,
   "purple":       #998099,
-  
+
   "green":        #699,
 
   "light-grey":   #e0e0e0,
@@ -33,20 +33,20 @@ $breakpoints: (
 ) !global;
 
 
-/** 
+/**
  * Z-indexes layers.
  *
  * @see {function} z
- * 
+ *
  * @type Map
  */
 $z-indexes: (
-  "goku"       9001,
-  "modal"      5000,
-  "dropdown"   4000,
-  "social"     3000,
-  "default"       1,
-  "below"        -1
+  "goku":       9001,
+  "modal":      5000,
+  "dropdown":   4000,
+  "social":     3000,
+  "default":       1,
+  "below":        -1
 ) !global;
 
 
