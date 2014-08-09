@@ -27,18 +27,19 @@
  */
 .item__name {
   color: color("dark-grey");
+  background-color: transparent;
 }
 
 /**
  * Code blocks
  */
-.item__example,
-.item__code {
-  word-wrap: break-word;
-  margin-top: 1em !important;
-  line-height: 1.42;
-  @include card(1);
-}
+// .item__example,
+// .item__code {
+//   word-wrap: break-word;
+//   margin-top: 1em !important;
+//   line-height: 1.42;
+//   @include card(1);
+// }
 
 /**
  * Anchor
@@ -55,10 +56,6 @@
       @include opacity(1);
     }
   }
-}
-
-code .text-muted {
-  color: #bb647a !important;
 }
 
 a {
@@ -97,13 +94,18 @@ a {
 }
 
 
+//
+// Need the !important flag because of the crazy
+// specificity for docs-section headings in
+// the Web Skin docs module
+//
 .item__sub-heading {
   // color: color("green");
-  color: #666;
-  margin-bottom: .5em;
-  margin-top: 1.5em;
+  color: #666 !important;
+  margin-bottom: .5em !important;
+  margin-top: 1.5em !important;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1em !important;
 }
 
 /**
@@ -178,7 +180,7 @@ a {
   .item__parameters td,
   .item__parameters th {
     border-top: 1px solid color("medium-grey");
-    
+
     &:first-of-type {
       padding-left: 0;
     }
@@ -226,6 +228,6 @@ a {
   p {
     vertical-align: sub;
     margin: 0;
-    padding 0 4px;
+    padding: 0 4px;
   }
 }

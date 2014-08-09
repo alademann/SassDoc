@@ -3,44 +3,52 @@
  */
 /**
  * Map of colors for quick grabbing.
- * See `_functions.scss` -> `color()` function.
+ *
+ * @see {function} color
  *
  * @type Map
  */
 /**
  * Map of breakpoints for responsive design.
- * See `_functions.scss` -> `respond-to()` function.
  *
- * @type Map
- */
-/** 
- * Z-indexes layers.
- * See `_functions.scss` -> `z()` function.
- * 
+ * @see {mixin} respond-to
+ *
  * @type Map
  */
 /**
+ * Z-indexes layers.
+ *
+ * @see {function} z
+ *
+ * @type Map
+ */
+/**
+ * Sidebar width
+ *
+ * @type Number
+ */
+/**
  * Returns the opposite direction of every direction in `$directions`.
- * 
+ *
  * @param {List} $directions - Positions to revert
  *
  * @throws No opposite direction found for `$direction`.
- * 
+ *
  * @return {List | Null}
  */
 /**
  * Clamp `$value` between `$min` and `$max`.
- * 
+ *
  * @param {Number} $value - Value to clamp between `$min` and `$max`
  * @param {Number} $min   - Minimum value
  * @param {Number} $max   - Maximum value
  *
  * @throws All parameters must be numbers for `clamp`.
- * 
+ *
  * @return {Number | Null}
  */
 /**
- * Helper to manage `z-index`. 
+ * Helper to manage `z-index`.
  * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
  * If found, returns it, else returns `null`.
  *
@@ -48,21 +56,22 @@
  *
  * @example scss
  * z-index: z("default")
- * 
+ *
  * @param {String} $layer - Layer
  *
  * @throws No z-index found for `$layer`.
- * 
+ *
  * @return {Number | Null}
  */
 /**
  * Color getter.
  *
  * @requires {variable} colors
- * 
+ * @requires SassCore::map-has-key *Since Sass 3.3* <http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method>
+ *
  * @example scss
  * color: color("pink");
- * 
+ *
  * @param {String} $color - Color to fetch
  *
  * @throws No color found for `$color`. Please make sure it is defined in `$colors` map.
@@ -71,10 +80,24 @@
  */
 /**
  * Tests whether the value is a valid length.
- * 
+ *
  * @param {*} $value - Value to test
- * 
+ *
  * @return {Bool}
+ */
+/**
+ * Computes a top-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
+ */
+/**
+ * Computes a bottom-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
  */
 /**
  * Mixin to size elements.
@@ -88,7 +111,7 @@
  *
  * @access private
  *
- * @requires is-valid-length
+ * @requires {function} is-valid-length
  *
  * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
  * @param {List}   $args     (()) - List of offsets and values
@@ -169,17 +192,47 @@
  *
  * @param {Number} $opacity - Opacity level, between 0 and 1
  */
-/*
+/**
  * Mixin handling inline-block and vertical-align at once.
  * If no align is specified, then the `vertical-align` property won't be output.
  *
  * @param {String} $align (null) - Vertical align
  */
 /**
+ * Gives a card depth effect.
+ *
+ * @param {Number} $depth - depth level (between 1 and 5)
+ *
+ * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+ * 
+ * @requires {function} clamp
+ * @requires {function} color
+ * @requires {function} top-shadow
+ * @requires {function} bottom-shadow
+ */
+/**
  * Float clearing helper.
  *
  * @param {Bool} $extend (true) - Whether or not extend a placeholder.
  */
+/**
+ * Accessibility hiding helper.
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ *
+ * @requires {mixin} size
+ */
+/* line 49, ../../scss/utils/_helpers.scss */
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0; }
+
 /**
  * Vendors
  */
@@ -341,8 +394,103 @@ pre[class*='language-'] > code[data-language]::before {
   text-shadow: none; }
 
 /**
+ * Base stuff
+ */
+/**
+ * Univeral box-sizing reset
+ */
+/**
+ * Body rules
+ */
+/**
+ * Links
+ */
+/**
+ * Code
+ */
+/* line 41, ../../scss/base/_base.scss */
+:not(pre) > code {
+  padding: 2px 4px;
+  background-color: transparent; }
+  /* line 49, ../../scss/base/_base.scss */
+  :not(pre) > code .text-muted {
+    color: #bb647a !important; }
+
+/**
+ * Tables
+ */
+/**
+ * Lists
+ */
+/**
+ * Main container
+ */
+/**
+ * Visually-hidden
+ */
+/**
  * Partials
  */
+/**
+ * Header
+ */
+/**
+ * Main title
+ */
+/* line 15, ../../scss/partials/_header.scss */
+.header__title {
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 .5em 0; }
+  /* line 20, ../../scss/partials/_header.scss */
+  .header__title a {
+    color: #e0e0e0; }
+  @media (min-width: 601px) {
+    /* line 15, ../../scss/partials/_header.scss */
+    .header__title {
+      float: left;
+      font-size: 1em;
+      margin-top: .25em;
+      margin-bottom: 0; } }
+
+/**
+ * Item count
+ */
+/* line 35, ../../scss/partials/_header.scss */
+.header__description {
+  float: left;
+  padding-top: .3em; }
+  /* line 39, ../../scss/partials/_header.scss */
+  .header__description * {
+    margin: 0; }
+
+/* line 34, ../../scss/partials/_searchbar.scss */
+.searchbar__suggestions {
+  display: block; }
+  /* line 44, ../../scss/partials/_searchbar.scss */
+  .searchbar__suggestions:empty {
+    display: none; }
+  /* line 48, ../../scss/partials/_searchbar.scss */
+  .searchbar__suggestions .selected {
+    background: #ddd; }
+  /* line 52, ../../scss/partials/_searchbar.scss */
+  .searchbar__suggestions li {
+    border-bottom: 1px solid #e0e0e0; }
+    /* line 55, ../../scss/partials/_searchbar.scss */
+    .searchbar__suggestions li:last-of-type {
+      border: none; }
+  /* line 60, ../../scss/partials/_searchbar.scss */
+  .searchbar__suggestions a {
+    display: block;
+    padding: .5em;
+    font-size: .9em; }
+    /* line 65, ../../scss/partials/_searchbar.scss */
+    .searchbar__suggestions a:focus, .searchbar__suggestions a:active, .searchbar__suggestions a:hover {
+      background: #e0e0e0; }
+  /* line 72, ../../scss/partials/_searchbar.scss */
+  .searchbar__suggestions code {
+    margin-right: .5em; }
+
 /* line 2, ../../scss/partials/_sidebar.scss */
 .wdesk-docs-sidebar .nav > li > .hitarea > .sidebar__annotation {
   font-weight: normal !important;
@@ -375,37 +523,133 @@ pre[class*='language-'] > code[data-language]::before {
       font-size: 12px; }
 
 /**
+ * Main titles
+ */
+/* line 29, ../../scss/partials/_main.scss */
+.main__heading {
+  color: #444;
+  padding: 1em .5em;
+  margin-top: 0;
+  font-size: 3em;
+  font-weight: 300; }
+  @media (min-width: 601px) {
+    /* line 29, ../../scss/partials/_main.scss */
+    .main__heading {
+      padding: 2em 0 0; } }
+
+/**
+ * Footer
+ */
+/* line 4, ../../scss/partials/_footer.scss */
+.footer {
+  background: #e0e0e0;
+  padding: 1em 0; }
+  @media (min-width: 601px) {
+    /* line 4, ../../scss/partials/_footer.scss */
+    .footer {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 280px; } }
+
+/**
+ * Project info
+ */
+/* line 16, ../../scss/partials/_footer.scss */
+.footer__project-info {
+  float: left; }
+
+/**
+ * "Built with SassDoc" mark.
+ */
+/* line 23, ../../scss/partials/_footer.scss */
+.footer__watermark {
+  float: right; }
+
+/**
+ * Make all three spans inline-blocks
+ */
+/* line 30, ../../scss/partials/_footer.scss */
+.project-info__name,
+.project-info__version,
+.project-info__license {
+  display: inline-block; }
+
+/**
+ * Make extra informations less prominent
+ */
+/* line 39, ../../scss/partials/_footer.scss */
+.project-info__version,
+.project-info__license {
+  color: #555; }
+
+/**
+ * Negates a space width
+ */
+/* line 47, ../../scss/partials/_footer.scss */
+.project-info__license {
+  text-indent: -.25em; }
+
+/**
+ * Item
+ */
+/* line 5, ../../scss/partials/_item.scss */
+.item + .item {
+  margin: 4em 0; }
+/* line 9, ../../scss/partials/_item.scss */
+.item p {
+  margin: 0 0 .5em 0; }
+
+/**
+ * Function name
+ */
+/* line 17, ../../scss/partials/_item.scss */
+.item__heading {
+  color: #444;
+  margin: 0 0 .5em 0;
+  position: relative;
+  font-size: 2em;
+  font-weight: 300; }
+
+/**
+ * Name
+ */
+/* line 28, ../../scss/partials/_item.scss */
+.item__name {
+  color: #444;
+  background-color: transparent; }
+
+/**
+ * Code blocks
+ */
+/**
  * Anchor
  */
-/* line 4, ../../scss/partials/_item.scss */
+/* line 47, ../../scss/partials/_item.scss */
 .item__anchor {
   font-size: .6em;
   color: #dfa0bf; }
   @media (min-width: 601px) {
-    /* line 4, ../../scss/partials/_item.scss */
+    /* line 47, ../../scss/partials/_item.scss */
     .item__anchor {
       position: absolute;
       right: 101%;
       bottom: 0.25em;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
       opacity: 0; }
-      /* line 12, ../../scss/partials/_item.scss */
+      /* line 55, ../../scss/partials/_item.scss */
       .item:hover .item__anchor {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
         opacity: 1; } }
 
-/* line 18, ../../scss/partials/_item.scss */
-code .text-muted {
-  color: #bb647a !important; }
-
-/* line 25, ../../scss/partials/_item.scss */
+/* line 64, ../../scss/partials/_item.scss */
 a:hover code, a:focus code {
   text-decoration: underline; }
 
 /**
  * Deprecated flag
  */
-/* line 34, ../../scss/partials/_item.scss */
+/* line 73, ../../scss/partials/_item.scss */
 .item__deprecated strong {
   color: #cc0000;
   text-transform: uppercase; }
@@ -413,100 +657,109 @@ a:hover code, a:focus code {
 /**
  * Type
  */
-/* line 42, ../../scss/partials/_item.scss */
+/* line 81, ../../scss/partials/_item.scss */
 .item__type {
-  color: #dddddd;
+  color: #ddd;
   text-transform: capitalize;
   font-size: .75em; }
 
 /**
  * Aliases
  */
-/* line 51, ../../scss/partials/_item.scss */
+/* line 90, ../../scss/partials/_item.scss */
 .item__alias,
 .item__aliased {
-  color: #dddddd;
+  color: #ddd;
   font-size: .8em; }
 
-/* line 58, ../../scss/partials/_item.scss */
-.wdesk-sassdoc-section > .item__sub-heading {
-  color: #666;
-  margin-bottom: .5em;
-  margin-top: 2em;
+/* line 102, ../../scss/partials/_item.scss */
+.item__sub-heading {
+  color: #666 !important;
+  margin-bottom: .5em !important;
+  margin-top: 1.5em !important;
   text-transform: uppercase;
-  font-size: 1em; }
-
-/**
- * Function name
- */
-/* line 70, ../../scss/partials/_item.scss */
-.wdesk-sassdoc-section > .item__heading {
-  font-size: 2.2em;
-  margin: 0 0 .5em 0;
-  font-weight: normal;
-  position: relative; }
-  /* line 77, ../../scss/partials/_item.scss */
-  .wdesk-sassdoc-section > .item__heading code {
-    background-color: transparent;
-    text-shadow: none; }
-  /* line 82, ../../scss/partials/_item.scss */
-  .wdesk-sassdoc-section > .item__heading .item__name {
-    color: #444; }
+  font-size: 1em !important; }
 
 /**
  * Tables
  */
-/* line 91, ../../scss/partials/_item.scss */
+/* line 115, ../../scss/partials/_item.scss */
 .table td > code,
 .table th > code {
   background-color: transparent;
   font-size: 100%; }
-/* line 96, ../../scss/partials/_item.scss */
+/* line 120, ../../scss/partials/_item.scss */
 .table td p code,
 .table th p code {
   font-size: 93%; }
-/* line 100, ../../scss/partials/_item.scss */
+/* line 124, ../../scss/partials/_item.scss */
 .table :not(pre) > code[class*="language-"] {
   white-space: nowrap; }
 
 /**
  * Parameters table
  */
-/* line 108, ../../scss/partials/_item.scss */
+/* line 132, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 113, ../../scss/partials/_item.scss */
+  /* line 137, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
     vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    border-top: none;
     text-align: left;
     font-weight: normal;
     white-space: nowrap;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 122, ../../scss/partials/_item.scss */
+  /* line 148, ../../scss/partials/_item.scss */
   .item__parameters th[scope="row"] code {
     font-weight: bold; }
-  /* line 126, ../../scss/partials/_item.scss */
+  /* line 152, ../../scss/partials/_item.scss */
+  .item__parameters tbody th {
+    text-align: left; }
+  /* line 156, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding-top: 1em;
     padding-bottom: 1em;
     vertical-align: top; }
-    /* line 131, ../../scss/partials/_item.scss */
+    /* line 161, ../../scss/partials/_item.scss */
     .item__parameters td > p:last-child, .item__parameters th > p:last-child {
       margin-bottom: 0; }
 
+@media (min-width: 601px) {
+  /* line 168, ../../scss/partials/_item.scss */
+  tbody > .item__parameter:first-of-type > * {
+    border-top: none; }
+
+  /* line 172, ../../scss/partials/_item.scss */
+  th code {
+    font-weight: normal; }
+
+  /* line 176, ../../scss/partials/_item.scss */
+  th {
+    padding-left: 0 !important; }
+
+  /* line 180, ../../scss/partials/_item.scss */
+  .item__parameters td,
+  .item__parameters th {
+    border-top: 1px solid #ddd; }
+    /* line 184, ../../scss/partials/_item.scss */
+    .item__parameters td:first-of-type,
+    .item__parameters th:first-of-type {
+      padding-left: 0; } }
 /**
  * Annotation list items
  */
-/* line 140, ../../scss/partials/_item.scss */
+/* line 193, ../../scss/partials/_item.scss */
 .list-annotations > li {
   margin: .4em 0; }
 
 /**
  * Scope/access
  */
-/* line 147, ../../scss/partials/_item.scss */
+/* line 200, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -515,12 +768,24 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 156, ../../scss/partials/_item.scss */
+/* line 209, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 162, ../../scss/partials/_item.scss */
+  /* line 215, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }
+
+/**
+ * Require's description
+ */
+/* line 225, ../../scss/partials/_item.scss */
+.item__requires-description, .item__requires-description * {
+  display: inline-block; }
+/* line 228, ../../scss/partials/_item.scss */
+.item__requires-description p {
+  vertical-align: sub;
+  margin: 0;
+  padding: 0 4px; }
