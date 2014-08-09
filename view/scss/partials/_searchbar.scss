@@ -1,44 +1,45 @@
-.searchbar {
-  @include clearfix;
-  display: inline-block;
-  float: right;
+// .searchbar {
+//   @include clearfix;
+//   display: inline-block;
+//   float: right;
 
-  @include respond-to(small) {
-    display: block;
-    float: none;
-  }
-}
+//   @include respond-to(small) {
+//     display: block;
+//     float: none;
+//   }
+// }
 
-.searchbar__form {
-  float: right;
-  position: relative;
+// .searchbar__form {
+//   float: right;
+//   position: relative;
 
-  @include respond-to(small) {
-    float: none;
-  }
+//   @include respond-to(small) {
+//     float: none;
+//   }
 
-  @include respond-to(medium) {
-    min-width: 15em;
-  }
-}
+//   @include respond-to(medium) {
+//     min-width: 15em;
+//   }
+// }
 
-.searchbar__field {
-  border: none;
-  padding: .5em;
-  font-size: 1em;
-  margin: 0;
-  width: 100%;
-  @include card(1);
-}
+// .searchbar__field {
+//   border: none;
+//   padding: .5em;
+//   font-size: 1em;
+//   margin: 0;
+//   width: 100%;
+//   @include card(1);
+// }
 
 .searchbar__suggestions {
-  @include absolute(top 100% right 0 left 0);
-  @include card(1);
-  background: white;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  z-index: z("default") + 1;
+  // @include absolute(top 100% right 0 left 0);
+  // @include card(1);
+  // background: white;
+  // padding: 0;
+  // margin: 0;
+  // list-style: none;
+  // z-index: z("default") + 1;
+  display: block;
 
   &:empty {
     display: none;

@@ -23,7 +23,9 @@
             {% for item in object %}
 
               {# Display item #}
-              <li class="sidebar__item  js-sassdoc__item"  data-name="{{item.context.name}}" data-type="{{ item.context.type }}">
+              <li class="sidebar__item js-sassdoc__item"
+                  data-name="{{item.context.name}}"
+                  data-type="{{ item.context.type }}">
                 <a class="sidebar__link hitarea" href="#{{ item.context.type }}-{{ item.context.name }}">
                   {{ item.context.name }}
                   {% if item.access[0] == "private" %}<em class="sidebar__annotation  sidebar__annotation--private">private</em>{% endif %}
