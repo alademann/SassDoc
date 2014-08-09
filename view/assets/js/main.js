@@ -37,10 +37,10 @@ var search = (function () {
     searchSuggestions.innerHTML = '';
     suggestions = items.slice(0, 10).map(function (item) {
       var li = document.createElement('li');
-      
+
       li.dataset.type = item.type;
       li.dataset.name = item.name;
-      li.innerHTML = '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
+      li.innerHTML = '<a class="hitarea" href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
 
       searchSuggestions.appendChild(li);
       return li;
@@ -101,7 +101,7 @@ var search = (function () {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
       currentSelection = -1;
       performSearch(searchInput.value);
-    } 
+    }
 
     else {
       e.preventDefault();
