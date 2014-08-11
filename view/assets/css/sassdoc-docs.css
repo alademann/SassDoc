@@ -234,197 +234,26 @@
   border: 0; }
 
 /**
- * Vendors
- */
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript+scss+bash&plugins=autolinker+wpd+file-highlight+show-language */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-/* line 8, ../../scss/vendors/_prism.scss */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: black;
-  text-shadow: 0 1px white;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none; }
-
-/* line 30, ../../scss/vendors/_prism.scss */
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-/* line 36, ../../scss/vendors/_prism.scss */
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-@media print {
-  /* line 43, ../../scss/vendors/_prism.scss */
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none; } }
-/* Code blocks */
-/* line 50, ../../scss/vendors/_prism.scss */
-pre[class*="language-"] {
-  padding: 1em;
-  margin: .5em 0;
-  overflow: auto; }
-
-/* Inline code */
-/* line 62, ../../scss/vendors/_prism.scss */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em; }
-
-/* line 67, ../../scss/vendors/_prism.scss */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: slategray; }
-
-/* line 74, ../../scss/vendors/_prism.scss */
-.token.punctuation {
-  color: #999; }
-
-/* line 78, ../../scss/vendors/_prism.scss */
-.namespace {
-  opacity: .7; }
-
-/* line 82, ../../scss/vendors/_prism.scss */
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol {
-  color: #905; }
-
-/* line 91, ../../scss/vendors/_prism.scss */
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.builtin {
-  color: #690; }
-
-/* line 98, ../../scss/vendors/_prism.scss */
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: #a67f59; }
-
-/* line 108, ../../scss/vendors/_prism.scss */
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  color: #07a; }
-
-/* line 114, ../../scss/vendors/_prism.scss */
-.token.function {
-  color: #DD4A68; }
-
-/* line 118, ../../scss/vendors/_prism.scss */
-.token.regex,
-.token.important {
-  color: #e90; }
-
-/* line 123, ../../scss/vendors/_prism.scss */
-.token.important {
-  font-weight: bold; }
-
-/* line 127, ../../scss/vendors/_prism.scss */
-.token.entity {
-  cursor: help; }
-
-/* line 131, ../../scss/vendors/_prism.scss */
-.token a {
-  color: inherit; }
-
-/* line 134, ../../scss/vendors/_prism.scss */
-code[class*="language-"] a[href],
-pre[class*="language-"] a[href] {
-  cursor: help;
-  text-decoration: none; }
-
-/* line 140, ../../scss/vendors/_prism.scss */
-code[class*="language-"] a[href]:hover,
-pre[class*="language-"] a[href]:hover {
-  cursor: help;
-  text-decoration: underline; }
-
-/* line 145, ../../scss/vendors/_prism.scss */
-pre[class*='language-'] {
-  position: relative; }
-
-/* line 148, ../../scss/vendors/_prism.scss */
-pre[class*='language-'] > code[data-language] {
-  overflow: scroll;
-  max-height: 28em;
-  display: block; }
-
-/* line 153, ../../scss/vendors/_prism.scss */
-pre[class*='language-'] > code[data-language]::before {
-  content: attr(data-language);
-  color: black;
-  background-color: #CFCFCF;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 0.9em;
-  border-radius: 0 0 0 5px;
-  padding: 0 0.5em;
-  text-shadow: none; }
-
-/**
  * Base stuff
- */
-/**
- * Univeral box-sizing reset
- */
-/**
- * Body rules
- */
-/**
- * Links
  */
 /**
  * Code
  */
-/* line 41, ../../scss/base/_base.scss */
+/* line 7, ../../scss/base/_base.scss */
+.item__example {
+  visibility: hidden; }
+  /* line 10, ../../scss/base/_base.scss */
+  .item__example[class*="language-"] {
+    visibility: visible; }
+
+/* line 15, ../../scss/base/_base.scss */
 :not(pre) > code {
   padding: 2px 4px;
   background-color: transparent; }
-  /* line 49, ../../scss/base/_base.scss */
+  /* line 19, ../../scss/base/_base.scss */
   :not(pre) > code .text-muted {
     color: #bb647a !important; }
 
-/**
- * Tables
- */
-/**
- * Lists
- */
-/**
- * Main container
- */
 /**
  * Visually-hidden
  */
@@ -509,23 +338,10 @@ pre[class*='language-'] > code[data-language]::before {
 .wdesk-sassdoc-main {
   font-size: 1.6rem; }
 
-/* line 10, ../../scss/partials/_main.scss */
-.page-api .highlight {
-  padding: 0; }
-  /* line 13, ../../scss/partials/_main.scss */
-  .page-api .highlight pre {
-    padding: 1em;
-    margin: 0; }
-    /* line 18, ../../scss/partials/_main.scss */
-    .page-api .highlight pre[class*='language-'] > code[data-language]::before {
-      background-color: transparent;
-      opacity: .2;
-      font-size: 12px; }
-
 /**
  * Main titles
  */
-/* line 29, ../../scss/partials/_main.scss */
+/* line 11, ../../scss/partials/_main.scss */
 .main__heading {
   color: #444;
   padding: 1em .5em;
@@ -533,7 +349,7 @@ pre[class*='language-'] > code[data-language]::before {
   font-size: 3em;
   font-weight: 300; }
   @media (min-width: 601px) {
-    /* line 29, ../../scss/partials/_main.scss */
+    /* line 11, ../../scss/partials/_main.scss */
     .main__heading {
       padding: 2em 0 0; } }
 
@@ -620,36 +436,33 @@ pre[class*='language-'] > code[data-language]::before {
   background-color: transparent; }
 
 /**
- * Code blocks
- */
-/**
  * Anchor
  */
-/* line 47, ../../scss/partials/_item.scss */
+/* line 36, ../../scss/partials/_item.scss */
 .item__anchor {
   font-size: .6em;
   color: #dfa0bf; }
   @media (min-width: 601px) {
-    /* line 47, ../../scss/partials/_item.scss */
+    /* line 36, ../../scss/partials/_item.scss */
     .item__anchor {
       position: absolute;
       right: 101%;
       bottom: 0.25em;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
       opacity: 0; }
-      /* line 55, ../../scss/partials/_item.scss */
+      /* line 44, ../../scss/partials/_item.scss */
       .item:hover .item__anchor {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
         opacity: 1; } }
 
-/* line 64, ../../scss/partials/_item.scss */
+/* line 53, ../../scss/partials/_item.scss */
 a:hover code, a:focus code {
   text-decoration: underline; }
 
 /**
  * Deprecated flag
  */
-/* line 73, ../../scss/partials/_item.scss */
+/* line 62, ../../scss/partials/_item.scss */
 .item__deprecated strong {
   color: #cc0000;
   text-transform: uppercase; }
@@ -657,7 +470,7 @@ a:hover code, a:focus code {
 /**
  * Type
  */
-/* line 81, ../../scss/partials/_item.scss */
+/* line 70, ../../scss/partials/_item.scss */
 .item__type {
   color: #ddd;
   text-transform: capitalize;
@@ -666,13 +479,13 @@ a:hover code, a:focus code {
 /**
  * Aliases
  */
-/* line 90, ../../scss/partials/_item.scss */
+/* line 79, ../../scss/partials/_item.scss */
 .item__alias,
 .item__aliased {
   color: #ddd;
   font-size: .8em; }
 
-/* line 102, ../../scss/partials/_item.scss */
+/* line 91, ../../scss/partials/_item.scss */
 .item__sub-heading {
   color: #666 !important;
   margin-bottom: .5em !important;
@@ -683,83 +496,68 @@ a:hover code, a:focus code {
 /**
  * Tables
  */
-/* line 115, ../../scss/partials/_item.scss */
+/* line 104, ../../scss/partials/_item.scss */
 .table td > code,
 .table th > code {
   background-color: transparent;
-  font-size: 100%; }
-/* line 120, ../../scss/partials/_item.scss */
+  font-size: 100%;
+  padding: 0; }
+/* line 110, ../../scss/partials/_item.scss */
 .table td p code,
 .table th p code {
   font-size: 93%; }
-/* line 124, ../../scss/partials/_item.scss */
+/* line 114, ../../scss/partials/_item.scss */
 .table :not(pre) > code[class*="language-"] {
   white-space: nowrap; }
 
 /**
  * Parameters table
  */
-/* line 132, ../../scss/partials/_item.scss */
+/* line 122, ../../scss/partials/_item.scss */
 .item__parameters {
   width: 100%;
   margin-bottom: 1em;
   border-collapse: collapse; }
-  /* line 137, ../../scss/partials/_item.scss */
+  /* line 127, ../../scss/partials/_item.scss */
   .item__parameters > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #ddd;
-    border-top: none;
-    text-align: left;
+    color: #777;
     font-weight: normal;
     white-space: nowrap;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 148, ../../scss/partials/_item.scss */
+  /* line 135, ../../scss/partials/_item.scss */
   .item__parameters th[scope="row"] code {
     font-weight: bold; }
-  /* line 152, ../../scss/partials/_item.scss */
+  /* line 139, ../../scss/partials/_item.scss */
   .item__parameters tbody th {
     text-align: left; }
-  /* line 156, ../../scss/partials/_item.scss */
+  /* line 143, ../../scss/partials/_item.scss */
   .item__parameters td, .item__parameters th {
     padding-top: 1em;
     padding-bottom: 1em;
     vertical-align: top; }
-    /* line 161, ../../scss/partials/_item.scss */
+    /* line 148, ../../scss/partials/_item.scss */
     .item__parameters td > p:last-child, .item__parameters th > p:last-child {
       margin-bottom: 0; }
 
 @media (min-width: 601px) {
-  /* line 168, ../../scss/partials/_item.scss */
+  /* line 155, ../../scss/partials/_item.scss */
   tbody > .item__parameter:first-of-type > * {
     border-top: none; }
 
-  /* line 172, ../../scss/partials/_item.scss */
+  /* line 159, ../../scss/partials/_item.scss */
   th code {
-    font-weight: normal; }
-
-  /* line 176, ../../scss/partials/_item.scss */
-  th {
-    padding-left: 0 !important; }
-
-  /* line 180, ../../scss/partials/_item.scss */
-  .item__parameters td,
-  .item__parameters th {
-    border-top: 1px solid #ddd; }
-    /* line 184, ../../scss/partials/_item.scss */
-    .item__parameters td:first-of-type,
-    .item__parameters th:first-of-type {
-      padding-left: 0; } }
+    font-weight: normal; } }
 /**
  * Annotation list items
  */
-/* line 193, ../../scss/partials/_item.scss */
+/* line 167, ../../scss/partials/_item.scss */
 .list-annotations > li {
   margin: .4em 0; }
 
 /**
  * Scope/access
  */
-/* line 200, ../../scss/partials/_item.scss */
+/* line 174, ../../scss/partials/_item.scss */
 .item__access {
   text-transform: capitalize;
   color: #998099;
@@ -768,23 +566,23 @@ a:hover code, a:focus code {
 /**
  * Since
  */
-/* line 209, ../../scss/partials/_item.scss */
+/* line 183, ../../scss/partials/_item.scss */
 .item__since {
   float: right;
   font-size: .5em;
   padding-top: .9em;
   color: #c4c4c4; }
-  /* line 215, ../../scss/partials/_item.scss */
+  /* line 189, ../../scss/partials/_item.scss */
   .item__heading:hover .item__since, .item__heading:focus .item__since {
     text-shadow: none; }
 
 /**
  * Require's description
  */
-/* line 225, ../../scss/partials/_item.scss */
+/* line 199, ../../scss/partials/_item.scss */
 .item__requires-description, .item__requires-description * {
   display: inline-block; }
-/* line 228, ../../scss/partials/_item.scss */
+/* line 202, ../../scss/partials/_item.scss */
 .item__requires-description p {
   vertical-align: sub;
   margin: 0;

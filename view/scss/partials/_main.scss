@@ -5,24 +5,6 @@
   font-size: 1.6rem;
 }
 
-// adjust code styles since our <pre> elems will be wrapped in a .highlight
-// we'll using the .page-api css class on the `<body>` elem for specificity
-.page-api .highlight {
-    padding: 0;
-
-    pre {
-        padding: 1em;
-        margin: 0;
-
-        // tweak appearance of code language label
-        &[class*='language-'] > code[data-language]::before {
-            background-color: transparent;
-            opacity: .2;
-            font-size: 12px;
-        }
-    }
-}
-
 /**
  * Main titles
  */
