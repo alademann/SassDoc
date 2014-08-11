@@ -105,6 +105,7 @@ a {
     th > code {
         background-color: transparent;
         font-size: 100%;
+        padding: 0;
     }
     td p code,
     th p code {
@@ -124,10 +125,7 @@ a {
   border-collapse: collapse;
 
   > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid color("medium-grey");
-    border-top: none;
-    text-align: left;
+    color: #777;
     font-weight: normal;
     white-space: nowrap;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -160,19 +158,6 @@ a {
 
   th code {
     font-weight: normal;
-  }
-
-  th {
-    padding-left: 0 !important;
-  }
-
-  .item__parameters td,
-  .item__parameters th {
-    border-top: 1px solid color("medium-grey");
-
-    &:first-of-type {
-      padding-left: 0;
-    }
   }
 }
 
