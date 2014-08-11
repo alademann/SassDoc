@@ -1,6 +1,17 @@
 /**
  * Code
  */
+// Prevent FOUC by hiding code examples
+// until prism.js finishes processing
+
+.item__example {
+    visibility: hidden;
+
+    &[class*="language-"] {
+        visibility: visible;
+    }
+}
+
 :not(pre) > code {
   padding: 2px 4px;
   background-color: transparent;
