@@ -1,8 +1,9 @@
 'use strict';
 
-var fs     = require('./file');
+var fs = require('./file');
 var logger = require('./log');
-var cgf    = require('./cfg');
+var cgf = require('./cfg');
+var safeWipe = require('safe-wipe');
 
 exports = module.exports = {
 
@@ -16,18 +17,32 @@ exports = module.exports = {
    * Main API function, running the whole thing.
    * @param {String} source - Source folder
    * @param {String} destination - Destination folder
-   * @param {Object} config - Configuration from `view.json`
+   * @param {Object} config - `.sassdocrc` path (or parsed content) or `cfg` output
    * @example
    * documentize('examples/sass', 'examples/dist', config)
    * @return {Q.Promise}
    */
   documentize: function (source, destination, config) {
-    config = cgf(config);
+    if (!config || !('__sassdoc__' in config)) {
+      config = cgf(config);
+    }
 
-    return fs.folder.refresh(destination)
+    return safeWipe(destination, {
+      interactive: config.view.interactive || false,
+      parent: source,
+      silent: true,
+      force: config.view.force
+    })
+      .then(function () {
+        return fs.folder.create(destination);
+      }, function (err) {
+        logger.error(err.message);
+        err.silent = true;
+        throw err;
+      })
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
-        return fs.getData(source);
+        return fs.getData(source, config.theme.annotations, config.view);
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
@@ -39,15 +54,20 @@ exports = module.exports = {
           return promise;
         }
 
-        throw 'Theme didn\'t return a promise, got ' +
-              Object.prototype.toString.call(promise) + '.';
+        throw new Error('Theme didn\'t return a promise, got ' +
+                        Object.prototype.toString.call(promise) + '.');
       })
       .then(function () {
-        logger.log('Theme successfully rendered.');
+        var themeLog = config.themeName ?
+          'Theme `' + config.themeName + '` successfully rendered.' :
+          'Anonymous theme successfully rendered.';
+
+        logger.log(themeLog);
         logger.log('Process over. Everything okay!');
-      })
-      .fail(function (err) {
-        logger.error('stack' in err ? err.stack : err);
+      }, function (err) {
+        if (!err.silent) {
+          logger.error('stack' in err ? err.stack : err);
+        }
         throw err;
       });
   },
@@ -59,8 +79,8 @@ exports = module.exports = {
    * sassdoc.parse('examples/sass')
    * @return {Q.Promise}
    */
-  parse: function (source) {
-    return fs.getData(source);
+  parse: function (source, annotations, view) {
+    return fs.getData(source, annotations, view);
   },
 
   /**

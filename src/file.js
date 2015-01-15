@@ -1,17 +1,15 @@
 'use strict';
 
-var fs     = require('fs');          // File system
-var mkdirp = require('mkdirp');      // mkdir -p
-var rimraf = require('rimraf');      // rm -rf
-var ncp    = require('ncp');         // cp -r
-var Q      = require('q');           // Promises
-var path   = require('path');        // Path
+var fs = require('fs');          // File system
+var mkdirp = require('mkdirp');  // mkdir -p
+var Q = require('q');            // Promises
+var path = require('path');      // Path
 
-var parser = require('./parser');
-var utils  = require('./utils');
+var Parser = require('./parser');
+
+var sorter = require('./sorter');
+var utils = require('./utils');
 var logger = require('./log');
-
-ncp.limit = 16;
 
 exports = module.exports = {
 
@@ -39,39 +37,12 @@ exports = module.exports = {
     create: Q.denodeify(mkdirp),
 
     /**
-     * Copy a folder.
-     * @see {@link https://github.com/AvianFlu/ncp}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    copy: Q.denodeify(ncp),
-
-    /**
-     * Remove a folder.
-     * @see {@link https://github.com/isaacs/rimraf}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    remove: Q.denodeify(rimraf),
-
-    /**
-     * Remove then create a folder.
-     * @param  {String} folder
-     * @return {Q.Promise}
-     */
-    refresh: function (folder) {
-      return exports.folder.remove(folder).then(function () {
-        logger.log('Folder `' + folder + '` successfully removed.');
-        return exports.folder.create(folder);
-      }, function () {
-        return exports.folder.create(folder);
-      });
-    },
-
-    /**
      * Parse a folder.
      * @param  {String} folder
+     * @param  {Object} parser
      * @return {Q.Promise}
      */
-    parse: function (folder) {
+    parse: function (folder, parser) {
       return exports.folder.read(folder).then(function (files) {
         var filePath;
         var promises = [];
@@ -82,14 +53,14 @@ exports = module.exports = {
 
           // Folder
           if (exports.isDirectory(filePath)) {
-            promises.push(exports.folder.parse(filePath).then(function (response) {
+            promises.push(exports.folder.parse(filePath, parser).then(function (response) {
               data = data.concat(response);
             }));
           }
 
           // SCSS file
           else if (utils.getExtension(filePath) === 'scss') {
-            promises.push(exports.file.process(filePath).then(function (response) {
+            promises.push(exports.file.process(filePath, parser).then(function (response) {
               if (Object.keys(response).length > 0) {
                 data = data.concat(response);
               }
@@ -124,25 +95,12 @@ exports = module.exports = {
     read: Q.denodeify(fs.readFile),
 
     /**
-     * Create a file.
-     * @see {@link http://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    create: Q.denodeify(fs.writeFile),
-
-    /**
-     * Remove a file.
-     * @see {@link http://nodejs.org/api/fs.html#fs_fs_unlink_path_callback}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    remove: Q.denodeify(fs.unlink),
-
-    /**
      * Process a file.
      * @param  {String} file
+     * @param  {Object} parser
      * @return {Q.Promise}
      */
-    process: function (file) {
+    process: function (file, parser) {
       return exports.file.read(file, 'utf-8').then(function (code) {
         var data = parser.parse(code);
 
@@ -167,28 +125,23 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isDirectory: function (path) {
-    return fs.lstatSync(path).isDirectory();
-  },
-
-  /**
-   * Dump assets (CSS, JS, ...).
-   * @param  {String} destination
-   * @return {Q.Promise}
-   */
-  dumpAssets: function (destination) {
-    var assetsPath = path.join(__dirname, '../view/assets', destination, 'assets');
-    return exports.folder.copy(assetsPath);
+    return fs.statSync(path).isDirectory();
   },
 
   /**
    * Get data.
    * @param {String} folder - folder path
+   * @param {Array} annotations - Additional annotations to use
+   * @param {Object} view - view configuration
    */
-  getData: function (folder) {
+  getData: function (folder, annotations, view) {
+    var parser = new Parser(view);
+        parser.annotations.addAnnotations(annotations);
+
     exports.folder.base = folder;
 
     // Parse the whole folder.
-    return exports.folder.parse(folder)
+    return exports.folder.parse(folder, parser)
       // Extract all items into a structure like https://gist.github.com/FWeinb/6b16c4fc85667ae6c1b5
       .then(function (data) {
         var byTypeAndName = {};
@@ -210,6 +163,7 @@ exports = module.exports = {
         return byTypeAndName;
       })
       // Run the postProcessor
-      .then(parser.postProcess);
+      .then(parser.postProcess.bind(parser))
+      .then(sorter.postProcess);
   }
 };

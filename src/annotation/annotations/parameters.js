@@ -1,6 +1,6 @@
 'use strict';
 
-var typeRegEx =  /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(.*))?/;
+var typeRegEx =  /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([\s\S]*))?/;
 
 module.exports = {
   parse: function (text) {
@@ -25,5 +25,7 @@ module.exports = {
 
     return obj;
   },
-  alias : ['arg', 'arguments', 'param']
+  alias: ['arg', 'arguments', 'param'],
+
+  allowedOn : ['function', 'mixin']
 };

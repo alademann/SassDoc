@@ -2,6 +2,10 @@
 
 var logger = require('./log');
 var path = require('path');
+var fs = require('fs');
+var yaml = require('js-yaml');
+var chalk = require('chalk');
+var _ = require('lodash');
 
 /**
  * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
@@ -21,6 +25,9 @@ function isModuleNotFound(name, e) {
 
 // Object identifier for module not found exception.
 var MODULE_NOT_FOUND = {};
+
+// Illegal type exception
+var ILLEGAL_TYPE = {};
 
 /**
  * Wrapper for `require` that will throw above `MODULE_NOT_FOUND` object
@@ -46,13 +53,37 @@ function requireNotFound(name) {
  * @return {String}
  */
 function resolveConfig(config) {
-  if (config[0] === '/') {
-    // Absolute
-    return config;
+  return path.resolve(process.cwd(), config);
+}
+
+/**
+ * Read a config file according to its extension.
+ *
+ * @param {String} file
+ */
+function readConfig(file) {
+  return yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
+}
+
+/**
+ * Try an array of config files until one is actually found, or
+ * return empty object.
+ *
+ * @param {Array} configs
+ */
+function tryConfigs(configs) {
+  for (var i = 0, length = configs.length; i < length; i++) {
+    try {
+      return readConfig(resolveConfig(configs[i]));
+    } catch (e) {
+      if (e !== ILLEGAL_TYPE && e.code !== 'ENOENT') {
+        throw e;
+      }
+    }
   }
 
-  // Relative
-  return process.cwd() + '/' + config;
+  // Empty view config, maybe the theme will set default values.
+  return {};
 }
 
 /**
@@ -62,23 +93,31 @@ function resolveConfig(config) {
  * @return {Object}
  */
 function requireConfig(config) {
-  if (!config) {
-    // Default value
-    config = 'view.json';
-  }
+  if (config) {
+    try {
+      return readConfig(resolveConfig(config));
+    } catch (e) {
+      if (e === ILLEGAL_TYPE) {
+        // Already logged
+      } else if (e.code === 'ENOENT') {
+        logger.error('Config file `' + config + '` not found.');
+      } else {
+        throw e;
+      }
 
-  config = resolveConfig(config);
-
-  try {
-    return requireNotFound(config);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
+      logger.warn('Falling back to default config.');
     }
-
-    // Empty view config, maybe the theme will set default values.
-    return {};
   }
+
+  logger.warn(
+    'Starting SassDoc ' + chalk.grey('v2.0') + ', the default ' +
+    'configuration file will be named ' + chalk.grey('.sassdocrc') + ' ' +
+    'rather than ' + chalk.grey('view.{json,yaml,yml}') +
+    '. Please consider using the ' + chalk.grey('--config') +
+    ' option right now to specify your own file.'
+  );
+
+  return tryConfigs(['view.json', 'view.yaml', 'view.yml']);
 }
 
 /**
@@ -205,7 +244,12 @@ function requireTheme(dir, theme) {
       throw e;
     }
 
-    logger.error('Theme `' + (theme || 'default') + '` not found.');
+    if (!theme) {
+      // Default theme was not found? WTF!
+      throw new Error('Holy shit, the default theme was not found!');
+    }
+
+    logger.error('Theme `' + theme + '` not found.');
     return defaultTheme(dir);
   }
 
@@ -221,12 +265,13 @@ function requireTheme(dir, theme) {
  * Parse configuration.
  *
  * @param {String|Object} view
+ * @param {Object} override Object that will override view properties.
  * @return {Object}
  */
-module.exports = function (view) {
+module.exports = function (view, override) {
   // Relative directory for `package` file
   var dir;
-  var config = {};
+  var config = {__sassdoc__: true};
 
   if (typeof view !== 'object') {
     dir = path.resolve(path.dirname(config));
@@ -236,12 +281,7 @@ module.exports = function (view) {
     dir = process.cwd();
   }
 
-  if (!('view' in view)) {
-    config.view = view;
-  } else {
-    // Already processed
-    config = view;
-  }
+  config.view = view = _.merge({}, view, override);
 
   // Resolve package
   if (typeof view.package === 'object') {
@@ -255,7 +295,11 @@ module.exports = function (view) {
     config.theme = view.theme;
   } else {
     config.theme = requireTheme(dir, view.theme);
+    config.themeName = view.theme || 'default';
   }
+
+  // Expose the relative path base
+  config.dir = dir;
 
   return config;
 };

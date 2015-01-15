@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-requires",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "requires": [
         {
@@ -26,6 +30,44 @@
         "path": "input.scss",
         "name": "input"
       }
+    },
+    "test-function-required": {
+      "description": "Test.\n",
+      "context": {
+        "type": "function",
+        "name": "test-function-required",
+        "code": "",
+        "line": {
+          "start": 10,
+          "end": 10
+        }
+      },
+      "access": [
+        "public"
+      ],
+      "group": [
+        [
+          "undefined"
+        ]
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      },
+      "usedBy": [
+        {
+          "description": "",
+          "context": {
+            "type": "function",
+            "name": "test-function-requires",
+            "code": "",
+            "line": {
+              "start": 5,
+              "end": 5
+            }
+          }
+        }
+      ]
     }
   }
 }

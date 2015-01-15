@@ -1,6 +1,6 @@
 {
   "name": "sassdoc",
-  "description": "Like JSDoc for your Sass files.",
+  "description": "Release the docs!",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> (http://hugogiraudel.com)",
   "contributors": [
     {
@@ -17,7 +17,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "1.4.1",
+  "version": "1.10.12",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -40,34 +40,48 @@
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
+  "files": [
+    "bin",
+    "src",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
   "dependencies": {
-    "sassdoc-theme-default": "^1.1.0",
+    "chalk": "^0.5.0",
+    "fdocopt": "0.*",
+    "js-yaml": "^3.2.1",
+    "lodash": "^2.4.1",
+    "mkdirp": "^0.5.0",
     "q": "^1.0.1",
     "rimraf": "~2.2.8",
-    "ncp": "^0.6.0",
-    "scss-comment-parser": "^0.3.2",
-    "mkdirp": "^0.5.0",
-    "docopt": "^0.4.0",
+    "safe-wipe": "0.*",
+    "sassdoc-theme-default": "^1.7.0",
+    "scss-comment-parser": "^0.5.0",
+    "semver": "^3.0.1",
+    "semver-regex": "^1.0.0",
     "update-notifier": "^0.2.0",
-    "chalk": "^0.5.0",
-    "lodash": "^2.4.1"
+    "which": "^1.0.5"
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "atom-screenshot": "^0.1.2",
+    "fs-extra": "^0.11.1",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",
     "grunt-browser-sync": "^1.1.2",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-sass": "^0.7.3",
-    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "^0.9.1",
-    "grunt-mocha-test": "^0.11.0",
+    "grunt-mocha-test": "^0.12.0",
     "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^0.4.0"
+    "time-grunt": "^1.0.0"
   },
+  "engines": {
+    "npm": ">=2.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "test": "grunt test",
     "rebuild": "rm -rf node_modules && npm install"

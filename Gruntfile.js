@@ -1,12 +1,14 @@
-/*jshint camelcase:false */
 'use strict';
 
 var path = require('path');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var fse = require('fs-extra');
+var q = require('q');
 var sassdoc = require('./src/api');
-var sdfs = require('./src/file');
+
+var copy = q.denodeify(fse.copy);
 
 // Set development theme.
 var themePath = 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light';
@@ -130,19 +132,6 @@ var config = {
     }
   },
 
-  uglify: {
-    options: {
-      compress: {
-        drop_console: true
-      }
-    },
-    develop: {
-      files: {
-        '<%= dirs.js %>/main.min.js': ['<%= dirs.js %>/main.js']
-      }
-    }
-  },
-
   clean: {
     empty: [
       '<%= dirs.develop %>/empty',
@@ -219,7 +208,11 @@ module.exports = function (grunt) {
 
     sassdoc
       .documentize(src, dest, config)
-      .then(done);
+      .then(done)
+      .catch(function (err) {
+        grunt.log.error(err);
+        grunt.fail.warn('SassDoc documentation failed.');
+      });
   });
 
 
@@ -230,7 +223,7 @@ module.exports = function (grunt) {
     var src = dirs.js;
     var dest = path.join(dirs.docs, 'assets/js');
 
-    sdfs.folder.copy(src, dest)
+    copy(src, dest)
       .then(function () {
         grunt.log.writeln('JS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
@@ -245,11 +238,54 @@ module.exports = function (grunt) {
     var src = dirs.css;
     var dest = path.join(dirs.docs, 'assets/css');
 
-    sdfs.folder.copy(src, dest)
+    copy(src, dest)
       .then(function () {
         grunt.log.writeln('CSS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
       });
+  });
+
+
+  // Programmatically install npm packages.
+  function npmInstall(pkgs, cb) {
+    var npm = require('npm');
+
+    npm.load({}, function (err) {
+      if (err) {
+        throw err;
+      }
+
+      console.log(chalk.red(
+        '>> Installing npm packages `' + pkgs.join(', ') + '`'
+      ));
+
+      npm.commands.install(pkgs, function (err) {
+        if (err) {
+          throw err;
+        }
+        cb();
+      });
+
+      npm.on('log', console.log);
+    });
+  }
+
+
+  // Check whether `atom-screenshot` is installed,
+  // and install if need be.
+  grunt.registerTask('install-screenshot', 'Check and install screenshot deps', function () {
+    var done = this.async();
+    var atomScreenshot;
+
+    try {
+      atomScreenshot = require('atom-screenshot');
+    }
+    catch (err) {
+      npmInstall(['atom-screenshot'], done);
+    }
+    finally {
+      atomScreenshot && done();
+    }
   });
 
 
@@ -274,6 +310,7 @@ module.exports = function (grunt) {
 
   // Update screenshot in Readme.
   grunt.registerTask('update-image', [
+    'install-screenshot',
     'browserSync:screenshot',
     'compile:develop',
     'take-screenshot',
