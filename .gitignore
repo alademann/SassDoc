@@ -1,5 +1,4 @@
 /node_modules
-/dist
 /bin/traceur-runtime.js
 /test/data/expected.stream.json
 /sassdoc
